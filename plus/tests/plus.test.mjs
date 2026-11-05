@@ -126,7 +126,7 @@ test('output through a symlink cannot overwrite any file under the backend', () 
   const root = tmp(), backend = join(root, 'backend'), alias = join(root, 'alias');
   try {
     mkdirSync(backend);
-    symlinkSync(backend, alias, 'dir');
+    symlinkSync(backend, alias, process.platform === 'win32' ? 'junction' : 'dir');
     assert.throws(() => assertOutside(join(alias, 'reports'), [backend]), /outside protected tree/);
   } finally { rmSync(root, {recursive: true, force: true}); }
 });

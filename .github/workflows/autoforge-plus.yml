@@ -18,10 +18,6 @@ on:
         description: 'Optional migration baseline git ref (e.g. origin/main)'
         required: false
         default: ''
-  push:
-    paths:
-      - 'plus/**'
-      - '.github/workflows/autoforge-plus.yml'
 
 permissions:
   contents: read

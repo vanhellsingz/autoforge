@@ -1,4 +1,19 @@
-# AutoForge 2.4
+# AutoForge — Core 2.4, Plus v1 e Studio 2.5
+
+**Entrada para o Arena:** [guia do Studio](docs/STUDIO.md) · [mapa do repositório](docs/README.md) · [instruções de implementação](PROMPT_ARENA.md).
+
+O Studio integra seis funções: Flight Recorder ligado ao diagnóstico causal, gerador Java21 por contrato, comparação de efeitos funcionais, verificador de invariantes, planejamento de reprodução e transporte de evidências pelo GitHub. O Core e o Plus permanecem disponíveis em seus caminhos originais.
+
+```powershell
+node studio/autoforge.mjs help
+npm test
+```
+
+Node22+; JDK21 para testes de Java gerado. Sem dependências npm. A CI completa verifica Windows e Linux; o recorder Windows é um workflow manual separado que só observa um navegador existente. As ferramentas não fazem deploy nem controlam serviços do jogo.
+
+As capturas exigem acesso ao navegador no runner; os contratos implementam uma gramática limitada de transições inteiras e exigem conexão à transação/codecs do backend. Evidências ausentes ficam UNVERIFIED. Os exemplos são fixtures, não homologação do Wartune.
+
+## Core 2.4 — documentação existente
 
 Uma execução prepara uma pasta para o Arena com Java21 compilado, comparações JS/Java, evidências, inventário e instruções de integração. Sem dependências npm.
 
@@ -7,13 +22,13 @@ Uma execução prepara uma pasta para o Arena com Java21 compilado, comparaçõe
 Node20+ e JDK21 no PATH (ou JAVA_HOME). Na raiz do Ultra:
 
 ```powershell
-node tools/autoforge-v2/run.mjs
+node run.mjs
 ```
 
 O padrão usa os assets preservados na raiz do checkout e salva em `../autoforge-v2-output`, fora do cliente. Para o cliente local do servidor:
 
 ```powershell
-node tools/autoforge-v2/run.mjs --client C:\WartuneUltra\client-qa-java-v1 --out C:\WartuneUltra\autoforge-entrega
+node run.mjs --client C:\WartuneUltra\client-qa-java-v1 --out C:\WartuneUltra\autoforge-entrega
 ```
 
 No Windows também existe `tools\autoforge-v2\autoforge.cmd` com os mesmos argumentos. `--help` mostra as opções. Apenas investigação, sem exigir Java: acrescente `--discover-only`.
@@ -39,7 +54,7 @@ Cada tarefa lista métodos gerados, referências e candidatos no backend com lin
 Para preparar uma entrega já gerada, sem repetir as comparações:
 
 ```powershell
-node tools/autoforge-v2/prepare.mjs --from CAMINHO_DA_ENTREGA --backend CAMINHO_JAVA_V1 --client CLIENTE_REAL
+node prepare.mjs --from CAMINHO_DA_ENTREGA --backend CAMINHO_JAVA_V1 --client CLIENTE_REAL
 ```
 
 O verificador confere os hashes das classes, relatórios e fontes do cliente. Ele recusa evidência alterada ou fonte diferente. A origem estática do relatório e o comportamento no cliente em execução continuam sendo evidências distintas.
@@ -69,8 +84,8 @@ O atalho PowerShell aceita `-Assessment REVISAO.json`. Replanejamento preserva o
 ## Instalar classes no backend
 
 ```powershell
-node tools/autoforge-v2/integrate.mjs --from C:\WartuneUltra\autoforge-entrega --backend C:\CAMINHO\java-v1
-node tools/autoforge-v2/integrate.mjs --from C:\WartuneUltra\autoforge-entrega --backend C:\CAMINHO\java-v1 --apply
+node integrate.mjs --from C:\WartuneUltra\autoforge-entrega --backend C:\CAMINHO\java-v1
+node integrate.mjs --from C:\WartuneUltra\autoforge-entrega --backend C:\CAMINHO\java-v1 --apply
 ```
 
 O primeiro comando só mostra a prévia. O segundo instala os tipos no pacote `com.wartuneultra.autoforge.v2`. Arquivos existentes sem marca da ferramenta e arquivos gerados editados à mão provocam conflito. Hashes, caminhos e alterações entre planejamento e escrita são conferidos. As escritas são atômicas por arquivo; a instalação de vários arquivos não é uma transação única.
@@ -91,7 +106,7 @@ Exemplo real validado: [examples/validated](examples/validated). É um snapshot 
 ## Verificação
 
 ```powershell
-node --test tools/autoforge-v2/tests/*.test.mjs
+node --test tests/*.test.mjs
 ```
 
 O scanner não executa os bundles. Os geradores só emitem a gramática suportada. Fluxos arbitrários e sintaxe diferente dos padrões conhecidos falham e exigem novo adaptador. Encontrar milhares de itens não implementa seus efeitos. Agregação completa de equipamentos, skills, pets, montarias, efeitos consumíveis, handlers e migrações continua fora do recorte automatizado atual.
@@ -113,7 +128,7 @@ Artefatos de avaliações usam `artifacts:[{path,sha256,format}]`, relativos ao 
 Fontes externas são opt-in e somente leitura:
 
 ```powershell
-node tools/autoforge-v2/prepare.mjs --from ENTREGA --backend JAVA_V1 --editor-root legado=C:\xampp\htdocs\2
+node prepare.mjs --from ENTREGA --backend JAVA_V1 --editor-root legado=C:\xampp\htdocs\2
 ```
 
 Não existe leitura automática de `htdocs\2`. A ferramenta não executa PHP, SQL ou HTTP, não grava no editor e exclui configurações/credenciais, dependências, backups e links. Formulário e chamada de gravação são candidatos distintos e permanecem sem prova de persistência. Raízes configuradas são preservadas ao replanejar a mesma entrega, e os hashes são conferidos antes do apply. Para escolher outro conjunto sem herdar raízes, use uma nova pasta de entrega. O atalho Windows aceita `-EditorRoot` para planejamento.
@@ -125,7 +140,7 @@ A CI `AutoForge isolated validation` usa runner hospedado, Node22 e Java21 e nã
 O passo `Publish verifiable evidence` guarda JUnit e relatório JSON completos em base64 com SHA256. Baixe os logs da run correspondente (por exemplo, `gh run view RUN_ID --repo vanhellsingz/ultra --log > run.log`) e execute:
 
 ```powershell
-node tools/autoforge-v2/ci-evidence.mjs recover run.log PASTA_NOVA
+node ci-evidence.mjs recover run.log PASTA_NOVA
 ```
 
 Bytes alterados, logs truncados, bundles duplicados e tentativas de sobrescrever arquivos são recusados. O relatório JSON identifica commit, ambiente, teste e run; comprova somente a validação da ferramenta. Logs precisam permanecer disponíveis no GitHub; exporte-os para retenção duradoura. Uma CI verde não demonstra integração de gameplay nem deploy.

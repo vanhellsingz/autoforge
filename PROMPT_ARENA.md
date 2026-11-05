@@ -1,11 +1,25 @@
-# AutoForge 2.4 — prompt para o Arena
+# AutoForge — prompt para o Arena
 
-Use a branch de ferramenta autoforge/v2-package. Integre somente tools/autoforge-v2 ao seu checkout de trabalho; preserve o backend mais novo. Não substituir seu checkout nem usar o JAR desta branch como release.
+Trabalhe na main do repositorio standalone vanhellsingz/autoforge para a ferramenta. O backend Wartune continua no seu checkout proprio; preservar seu diff e configuracao efetiva. Nunca copiar este repositorio por cima do backend.
 
-1. Execute `node tools/autoforge-v2/run.mjs --client CAMINHO_DO_CLIENTE --out CAMINHO_DA_ENTREGA --backend CAMINHO_JAVA_V1`. Sem --client, usa o cliente preservado na raiz do repositório. O diretório de entrega precisa ficar fora da árvore do cliente. Node20+ e JDK21; JAVA_HOME é reconhecido. `--discover-only` permite investigação sem Java.
+## Studio: seis ferramentas integradas
+
+1. Leia docs/STUDIO.md e docs/README.md. Execute node studio/autoforge.mjs help.
+2. Capture a acao no runner autorizado com o Flight Recorder; nao inicie/pare servicos nem recarregue o navegador para capturar. Se CDP/sessao/decoder nao estiverem disponiveis, registre o bloqueio; nao invente opcodes.
+3. Gere o causal-context.json pelo Core no backend atual. Use diagnose ou bundle para relacionar a captura aos candidatos do codigo e aos logs Java com IDs explicitos.
+4. Compare a mesma acao/entradas entre referencia e Java. Exija inventario/moedas/UI/persistencia e artefatos com commit, ambiente, teste e hashes. Rode audit para detectar duplicacao, perda de tropas e debito repetido.
+5. Escreva um contrato dentro da gramatica suportada, com fontes observadas e metodos exatos do backend. Gere servico/handler/teste com generate. Confirme transacoes reais, propriedade da sessao, codecs e readback. O adaptador em memoria e somente de teste.
+6. Use replay para preparar a reproducao; executar acoes exige adaptador revisado e autorizacao explicita. Use bridge/import para transportar relatorios pelos logs do GitHub sem Cloudflare.
+7. Integre no backend e rode validacao focada. As ferramentas nao fazem deploy do Wartune. Paradas/reinicios de servicos e testes disruptivos precisam de autorizacao especifica; nao interrompa o trabalho de outro agente.
+
+Sem evidencias, use UNVERIFIED. Classes geradas, imports, HTTP 200 e frames recebidos nao comprovam a funcionalidade completa. Replaneje se o backend mudou. Nao remova funcionalidade porque um scanner nao a localizou.
+
+## Core 2.4: extracao e instalacao limitada de tipos puros
+
+1. Execute `node run.mjs --client CAMINHO_DO_CLIENTE --out CAMINHO_DA_ENTREGA --backend CAMINHO_JAVA_V1`. Sem --client, usa o cliente preservado na raiz do repositório. O diretório de entrega precisa ficar fora da árvore do cliente. Node20+ e JDK21; JAVA_HOME é reconhecido. `--discover-only` permite investigação sem Java.
 2. Abra COMECE_AQUI.md, INPUTS.md e tasks/01...04 na entrega. arena-plan.json contém referências candidatas do backend com linha e hash; elas não comprovam integração. Confira manifest.json validated:true, handoff.json e os relatórios *.evidence.json. Uma execução com falha invalida o manifest anterior. As fórmulas são comparadas com transcrições JS independentes revisadas; isso não é captura da página em execução.
 3. Use discovery.json para navegar fórmulas, itens e opcodes. Classificação por tipo não implementa o efeito. Não conceder itens, recursos ou recompensas para efeitos desconhecidos. O vocabulário de missões também não implementa seus handlers.
-4. Execute `node tools/autoforge-v2/integrate.mjs --from CAMINHO_DA_ENTREGA --backend CAMINHO_JAVA_V1` para prévia. Depois acrescente --apply. O instalador coloca somente classes geradas no pacote com.wartuneultra.autoforge.v2. Não cria migrations nem conecta handlers. Se houver conflito de classe existente, resolva explicitamente; não sobrescreva alterações manuais.
+4. Execute `node integrate.mjs --from CAMINHO_DA_ENTREGA --backend CAMINHO_JAVA_V1` para prévia. Depois acrescente --apply. O instalador coloca somente classes geradas no pacote com.wartuneultra.autoforge.v2. Não cria migrations nem conecta handlers. Se houver conflito de classe existente, resolva explicitamente; não sobrescreva alterações manuais.
 5. Conecte os métodos puros aos serviços existentes: atributos devem consumir o estado efetivo completo; não somar FightingCapacity do mesmo bônus duas vezes. Equipamento/consumível precisa validar posse, nível, classe, quantidade, limites, slots, moeda e transação. Tempo e RNG devem ser entradas explícitas. Material de forja deve vir dos slots persistidos, não presumido zero porque C2S não tem corpo.
 6. Teste serviço com MariaDB e protocolo em uma amostra por ramo (equipar/trocar/retirar, vender, consumir, encantar sucesso/falha/limite). Repetição de pacote não pode duplicar concessão ou cobrança. Verifique S2C e persistência após relogin. S2C301 precisa existir antes da inicialização de SRoleWnd; S2C150 registra listeners usados pelo113. Não substituir a interface por placeholders.
 7. Para aplicação eficiente, compile e execute testes primeiro, guarde SHA do artefato e use o procedimento autorizado de aplicação local. Faça preflight de PID/porta/diretório/esquema efetivo, backup antes de migrações pendentes e verificação de compatibilidade do JAR de rollback. Troque apenas o Java verificado. Após reinício, verifique health e hash; o gate deve testar primeiro login, inventário/cliques e edifício, depois campanha. Registre a primeira condição que falhar e preserve resultados positivos. Não executar um gate distante para declarar funcionalidades básicas prontas.

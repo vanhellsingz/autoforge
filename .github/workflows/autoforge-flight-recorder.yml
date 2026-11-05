@@ -1,0 +1,60 @@
+name: AutoForge Windows flight recorder (manual observer)
+on:
+  workflow_dispatch:
+    inputs:
+      cdp:
+        description: 'Existing local browser debugging endpoint on the registered runner'
+        required: true
+        default: 'http://127.0.0.1:9222'
+      page_url:
+        description: 'Exact existing game page URL; no page is opened or reloaded'
+        required: true
+        default: 'http://127.0.0.1:5173/index.html'
+      seconds:
+        description: 'Observation duration (1..300 seconds)'
+        required: true
+        default: '30'
+      backend_commit:
+        description: 'Optional exact backend commit; this is declared provenance, not deployed-JAR attestation'
+        required: false
+      capture_actions:
+        description: 'Observe pointer positions only; never values typed in inputs'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  observe:
+    # Add the autoforge-recorder label only to the intended local Windows runner.
+    runs-on: [self-hosted, Windows, autoforge-recorder]
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: autoforge-observer
+          persist-credentials: false
+      - name: Observe existing browser only
+        shell: powershell
+        env:
+          CDP_ENDPOINT: ${{ inputs.cdp }}
+          GAME_PAGE: ${{ inputs.page_url }}
+          OBSERVE_SECONDS: ${{ inputs.seconds }}
+          BACKEND_COMMIT: ${{ inputs.backend_commit }}
+          CAPTURE_ACTIONS: ${{ inputs.capture_actions }}
+        run: |
+          $ErrorActionPreference='Stop'
+          if([int]$env:OBSERVE_SECONDS -lt 1 -or [int]$env:OBSERVE_SECONDS -gt 300){throw 'Duration outside 1..300 seconds'}
+          $capture=Join-Path $env:RUNNER_TEMP "autoforge-flight-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          "AUTOFORGE_CAPTURE=$capture" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          $argv=@('autoforge-observer/studio/autoforge.mjs','record','--cdp',$env:CDP_ENDPOINT,'--page-url',$env:GAME_PAGE,'--out',$capture,'--seconds',$env:OBSERVE_SECONDS,'--environment',"runner-$env:RUNNER_NAME")
+          if($env:BACKEND_COMMIT){$argv+=@('--commit',$env:BACKEND_COMMIT)}
+          if($env:CAPTURE_ACTIONS -eq 'true'){$argv+='--capture-actions'}
+          & node @argv
+          if($LASTEXITCODE -ne 0){throw 'Recorder failed; no service was started/stopped'}
+      - name: Publish capture through GitHub logs (no public tunnel)
+        if: always()
+        shell: powershell
+        run: |
+          if(-not $env:AUTOFORGE_CAPTURE){throw 'Capture was not created'}
+          & node autoforge-observer/studio/autoforge.mjs bridge --root $env:AUTOFORGE_CAPTURE --files events.jsonl,capture-manifest.json
+          if($LASTEXITCODE -ne 0){throw 'Capture transport failed or exceeded bounded log capacity'}

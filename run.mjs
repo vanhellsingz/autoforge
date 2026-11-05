@@ -7,7 +7,7 @@ import {sha256,assertSeparateOutput} from './assets.mjs';
 import {discover} from './discover.mjs';
 const here=dirname(fileURLToPath(import.meta.url));
 export function options(args) {
- const r={client:resolve(here,'../..'),out:resolve(here,'../../../autoforge-v2-output'),discoverOnly:false};
+ const r={client:resolve(here),out:resolve(here,'../autoforge-output'),discoverOnly:false};
  for(let i=0;i<args.length;i++) {
   const arg=args[i];
   if(arg==='--editor-root'){const value=args[++i];if(!value)throw Error('--editor-root requires name=path');(r.editorRoots??=[]).push(parseEditorRoot(value));}

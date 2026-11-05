@@ -1,0 +1,39 @@
+name: AutoForge complete validation
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: autoforge-full-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Syntax and complete unit/integration suite (tool fixtures)
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/autoforge-evidence"
+          for file in *.mjs plus/*.mjs studio/*.mjs; do node --check "$file"; done
+          node --test --test-reporter=junit tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs > "$RUNNER_TEMP/autoforge-evidence/unit-results.xml"
+          node record-validation.mjs --junit "$RUNNER_TEMP/autoforge-evidence/unit-results.xml" --out "$RUNNER_TEMP/autoforge-evidence/unit-report.json" --environment "github-actions-${{ matrix.os }}"
+      - name: Publish verifiable test evidence without artifact quota
+        if: always()
+        shell: bash
+        run: node ci-evidence.mjs emit "$RUNNER_TEMP/autoforge-evidence"

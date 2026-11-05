@@ -15,7 +15,7 @@ function safeFile(root,path){
 }
 function attributes(text){
  const out={};let cursor=0;
- const re=/\s+([A-Za-z_][\w.-]*)\s*=\s*(?:"([^"<>]*)"|'([^'<>]*)')/y;
+ const re=/\s+([A-Za-z_][\w.-]*)\s*=\s*(?:"([^"<]*)"|'([^'<]*)')/y;
  while(cursor<text.length){if(!text.slice(cursor).trim())break;re.lastIndex=cursor;const m=re.exec(text);if(!m)throw Error('Unsupported JUnit XML attributes');if(Object.hasOwn(out,m[1]))throw Error('Duplicate JUnit XML attribute');out[m[1]]=m[2]??m[3];cursor=re.lastIndex;}
  return out;
 }

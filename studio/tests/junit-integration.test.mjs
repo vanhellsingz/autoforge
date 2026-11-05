@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {parseJUnit} from '../../test-artifacts.mjs';
+test('combined Plus/Core JUnit accepts legal greater-than sign in quoted testcase names',()=>{const r=parseJUnit('<testsuites><testcase name="bundle (> 8 MiB)"/></testsuites>');assert.equal(r.passed,1);assert.throws(()=>parseJUnit('<testsuites><testcase name="bad < tag"/></testsuites>'));});

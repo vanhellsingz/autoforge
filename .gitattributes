@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# These snapshots carry byte-level hashes. Checkout must preserve their bytes.
+examples/validated/** -text

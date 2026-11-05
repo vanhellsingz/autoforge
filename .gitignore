@@ -1,0 +1,11 @@
+node_modules/
+output/
+autoforge-output/
+.autoforge-plus/
+captures/
+.env
+.env.*
+*.dpapi
+*.class
+*.log
+coverage/

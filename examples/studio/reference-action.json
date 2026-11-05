@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "fixture": true,
+  "action": {"type":"inventory.consume","inputs":{"templateId":208001,"bound":true,"quantity":1}},
+  "identity": {"commit":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","environment":{"name":"reference-example","kind":"FIXTURE"},"testId":"inventory-consume-example"},
+  "before": {"inventory":[{"templateId":208001,"bound":true,"quantity":2}],"currencies":{"gold":500}},
+  "after": {"inventory":[{"templateId":208001,"bound":true,"quantity":1}],"currencies":{"gold":500}},
+  "ui": {"checks":[{"id":"bag.quantity","expected":1,"actual":1,"result":"passed"}]},
+  "persistence": {"relogin":true,"state":{"inventory":[{"templateId":208001,"bound":true,"quantity":1}],"currencies":{"gold":500}}},
+  "artifacts": []
+}
