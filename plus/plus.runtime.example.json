@@ -1,0 +1,10 @@
+{
+  "host": "127.0.0.1",
+  "port": 19090,
+  "healthUrl": "http://127.0.0.1:19090/actuator/health",
+  "jar": "C:/WartuneUltra/java-source/java-v1/apps/game-server/target/game-server-1.0.0-SNAPSHOT.jar",
+  "logFile": "C:/WartuneUltra/logs/java-live.log",
+  "mysqlHost": "127.0.0.1",
+  "mysqlPort": 3306,
+  "baseline": "C:/WartuneUltra/autoforge-plus-output/runtime-baseline.json"
+}

@@ -1,0 +1,68 @@
+name: AutoForge Plus guard
+
+# Static tests run on hosted GitHub Actions. A scan runs only if an actual backend
+# checkout exists on that same runner; ubuntu-latest cannot see a Windows PC.
+# No deploy, database writes, service restarts, or backend mutation.
+on:
+  workflow_dispatch:
+    inputs:
+      backend:
+        description: 'Existing Java backend directory inside THIS hosted checkout (leave blank to test Plus only)'
+        required: false
+        default: ''
+      client:
+        description: 'Existing LayaAir client directory inside THIS hosted checkout (optional)'
+        required: false
+        default: ''
+      base:
+        description: 'Optional migration baseline git ref (e.g. origin/main)'
+        required: false
+        default: ''
+  push:
+    paths:
+      - 'plus/**'
+      - '.github/workflows/autoforge-plus.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  plus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify JavaScript syntax
+        run: |
+          for f in plus/*.mjs plus/tests/*.mjs; do node --check "$f"; done
+      - name: Run all Plus unit and regression tests
+        run: node --test plus/tests/*.test.mjs
+      - name: Backend scan (only when backend is actually present on this runner)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.backend != '' }}
+        env:
+          BACKEND: ${{ inputs.backend }}
+          CLIENT: ${{ inputs.client }}
+          BASE: ${{ inputs.base }}
+        run: |
+          if [ ! -d "$BACKEND" ]; then
+            echo "::error::Backend '$BACKEND' is not in the hosted runner checkout. This action cannot access local Windows paths."
+            exit 1
+          fi
+          args=(scan --backend "$BACKEND" --out "$RUNNER_TEMP/autoforge-plus")
+          if [ -n "$CLIENT" ]; then
+            if [ ! -d "$CLIENT" ]; then echo "::error::Client path '$CLIENT' is not in this checkout"; exit 1; fi
+            args+=(--client "$CLIENT")
+          fi
+          [ -n "$BASE" ] && args+=(--base "$BASE")
+          node plus/plus.mjs "${args[@]}"
+      - name: Print scan report (never consumes artifact quota)
+        if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.backend != '' }}
+        run: |
+          if [ -f "$RUNNER_TEMP/autoforge-plus/PLUS_SCAN_REPORT.md" ]; then
+            cat "$RUNNER_TEMP/autoforge-plus/PLUS_SCAN_REPORT.md"
+          fi
