@@ -1,0 +1,339 @@
+{
+  "rule": "quest.condition.vocabulary",
+  "sources": [
+    {
+      "path": "js/bundle_release-ad60bfe795.js",
+      "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+    },
+    {
+      "path": "res/release/config/t_s_questcondiction-257a97b1b1.json",
+      "sha256": "f22e2813e81e883caa90c4833918c4681fbb4daea5433c3381e6179eb51d9c30"
+    },
+    {
+      "path": "res/release/config/t_s_questtemplate-f38c33000a.json",
+      "sha256": "f8b47f9395a9aa8d3b1ec027e3648e3ba206a739da2850e9bfcefa3389cecba4"
+    }
+  ],
+  "spanConvention": "UTF-8 byte offsets, inclusive start and exclusive end",
+  "client": {
+    "symbol": "hc (condition type enum)",
+    "definition": {
+      "start": 901276,
+      "end": 901632,
+      "sha256": "5eb33d7a843e76c0101ca957819001a75c3fffa23b5a16f75772dc615c429933"
+    },
+    "members": [
+      {
+        "id": 1,
+        "name": "GIVE_PAWNS"
+      },
+      {
+        "id": 2,
+        "name": "STRENGTHEN"
+      },
+      {
+        "id": 3,
+        "name": "MOSAIC"
+      },
+      {
+        "id": 4,
+        "name": "COLLECTION"
+      },
+      {
+        "id": 5,
+        "name": "CHARGE"
+      },
+      {
+        "id": 6,
+        "name": "ASTROLOGY"
+      },
+      {
+        "id": 7,
+        "name": "KILL_MONSTER"
+      },
+      {
+        "id": 8,
+        "name": "PLUNDER"
+      },
+      {
+        "id": 9,
+        "name": "DONATE"
+      },
+      {
+        "id": 10,
+        "name": "SYNTHESIS"
+      },
+      {
+        "id": 11,
+        "name": "CONSUME"
+      },
+      {
+        "id": 12,
+        "name": "QTE"
+      },
+      {
+        "id": 13,
+        "name": "ARREST_MONSTER"
+      },
+      {
+        "id": 14,
+        "name": "ARREST_HERO"
+      },
+      {
+        "id": 15,
+        "name": "HAMSTER_GAME"
+      },
+      {
+        "id": 16,
+        "name": "TALKTASK"
+      },
+      {
+        "id": 17,
+        "name": "KILLPETMONSTER"
+      },
+      {
+        "id": 18,
+        "name": "KILLDUPLICATEMONSTER"
+      },
+      {
+        "id": 19,
+        "name": "COMMITITEM"
+      },
+      {
+        "id": 20,
+        "name": "PETSACRIFICE"
+      },
+      {
+        "id": 21,
+        "name": "RESIDENTTASK"
+      }
+    ],
+    "dispatchers": [
+      {
+        "start": 903327,
+        "end": 903351,
+        "sha256": "3f14f74d44568b0a5550fac77608ed3d934307a5c812c9e97cb51028406b0c72"
+      },
+      {
+        "start": 904657,
+        "end": 904681,
+        "sha256": "d57d5dc5652a649fceb2a339bd7f8c829b6e686394ef79d1106a123971b58f14"
+      },
+      {
+        "start": 911267,
+        "end": 911291,
+        "sha256": "29bd845d4f8f1b88cf105eeb0a3ac3a7999cda7ea74e9e080e1659847e5c8b26"
+      },
+      {
+        "start": 916047,
+        "end": 916071,
+        "sha256": "d57d5dc5652a649fceb2a339bd7f8c829b6e686394ef79d1106a123971b58f14"
+      },
+      {
+        "start": 2322887,
+        "end": 2322911,
+        "sha256": "d57d5dc5652a649fceb2a339bd7f8c829b6e686394ef79d1106a123971b58f14"
+      },
+      {
+        "start": 2325224,
+        "end": 2325248,
+        "sha256": "3f14f74d44568b0a5550fac77608ed3d934307a5c812c9e97cb51028406b0c72"
+      },
+      {
+        "start": 2326348,
+        "end": 2326372,
+        "sha256": "29bd845d4f8f1b88cf105eeb0a3ac3a7999cda7ea74e9e080e1659847e5c8b26"
+      },
+      {
+        "start": 6012254,
+        "end": 6012278,
+        "sha256": "e2735eee015d99b8af9f5aa62054929649260018c10ac7f3b4f988ea878d810d"
+      },
+      {
+        "start": 6013253,
+        "end": 6013277,
+        "sha256": "bb1b6c9aa62edf69584e0fd59d3ac36e5439981102735a4fc414f0fdce940c23"
+      },
+      {
+        "start": 8457987,
+        "end": 8458011,
+        "sha256": "d57d5dc5652a649fceb2a339bd7f8c829b6e686394ef79d1106a123971b58f14"
+      }
+    ],
+    "dispatcherNote": "Each site is a switch over CondictionType; extracting the per-type handler is the next adapter."
+  },
+  "catalogue": {
+    "conditionRows": 394,
+    "questRows": 373,
+    "questsWithConditions": 373,
+    "questsWithPrerequisite": 196,
+    "maxConditionsPerQuest": 4,
+    "distinctTypesUsed": 83,
+    "knownTypesUsed": 16,
+    "unknownTypesUsed": [
+      22,
+      23,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      63,
+      64,
+      65,
+      66,
+      71,
+      74,
+      76,
+      77,
+      78,
+      79,
+      80,
+      85,
+      86,
+      87,
+      89,
+      90,
+      91,
+      93,
+      96,
+      98,
+      99,
+      100,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      203,
+      216
+    ],
+    "rowsWithKnownType": 145,
+    "rowsWithUnknownType": 249,
+    "usageById": {
+      "1": 35,
+      "2": 41,
+      "3": 5,
+      "4": 1,
+      "7": 2,
+      "8": 3,
+      "10": 3,
+      "12": 3,
+      "14": 41,
+      "15": 1,
+      "16": 2,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 4,
+      "21": 1,
+      "22": 1,
+      "23": 6,
+      "25": 49,
+      "26": 34,
+      "27": 11,
+      "28": 7,
+      "29": 4,
+      "30": 1,
+      "31": 2,
+      "32": 7,
+      "33": 2,
+      "34": 1,
+      "35": 4,
+      "36": 1,
+      "37": 5,
+      "38": 1,
+      "39": 1,
+      "40": 2,
+      "41": 1,
+      "42": 1,
+      "44": 2,
+      "45": 2,
+      "46": 1,
+      "47": 1,
+      "48": 1,
+      "49": 15,
+      "50": 2,
+      "51": 2,
+      "52": 1,
+      "53": 1,
+      "54": 2,
+      "56": 1,
+      "57": 1,
+      "58": 1,
+      "59": 2,
+      "60": 4,
+      "61": 2,
+      "63": 1,
+      "64": 1,
+      "65": 1,
+      "66": 1,
+      "71": 1,
+      "74": 1,
+      "76": 2,
+      "77": 3,
+      "78": 6,
+      "79": 2,
+      "80": 2,
+      "85": 14,
+      "86": 1,
+      "87": 1,
+      "89": 1,
+      "90": 1,
+      "91": 1,
+      "93": 1,
+      "96": 12,
+      "98": 1,
+      "99": 1,
+      "100": 1,
+      "102": 1,
+      "103": 1,
+      "104": 1,
+      "105": 1,
+      "106": 1,
+      "107": 1,
+      "203": 4,
+      "216": 1
+    }
+  },
+  "generated": {
+    "path": "generated/QuestConditionType.java",
+    "sha256": "520fd76b9157f7d5a17e0bf213980bb32a7c347bb8cc477af91440cb1597ee99"
+  },
+  "gaps": [
+    "The semantics of Para1..Para4 are per-type and are not extracted yet; only the type vocabulary is anchored here.",
+    "67 CondictionType value(s) used by the catalogue have no name in the client enum and stay unsupported until their dispatcher case is found.",
+    "No condition is evaluated by this adapter: the engine that consumes the vocabulary is a separate change."
+  ]
+}

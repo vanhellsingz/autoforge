@@ -1,0 +1,176 @@
+{
+  "rule": "forge.common.enhancement.gold",
+  "sources": [
+    {
+      "path": "js/bundle_release-ad60bfe795.js",
+      "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+    },
+    {
+      "path": "libs/protobuf-bundles-1f16c1f251.js",
+      "sha256": "8d3784607e1a5f7652a5466501db2e3880fe4e967f8e00b80d5caa800587ac6e"
+    },
+    {
+      "path": "res/release/config/t_s_itemtemplate-43b07d7a92.json",
+      "sha256": "871734f953ef5fd9eba0483a19f72405d2e05cd263cade3224f52fe9c09eca37"
+    }
+  ],
+  "spanConvention": "UTF-8 byte offsets, inclusive start and exclusive end",
+  "client": {
+    "symbol": "getIntensifuGold",
+    "definition": {
+      "start": 1213425,
+      "end": 1213623,
+      "sha256": "32bd29fa9d6fd6a960e3841abc891dfa3c1393bf70e46a549527918361e8e010"
+    },
+    "display": {
+      "start": 4846635,
+      "end": 4846728,
+      "sha256": "cb807ee02ae190a71c477a0a886b7b4842c0a405388f0ef66d971af122390d91"
+    },
+    "bindings": {
+      "e": "t.templateInfo.NeedGrades",
+      "i": "Math.min(t.templateInfo.Profile,4)",
+      "s": "t.strengthenGrade"
+    },
+    "expression": "Math.floor(Math.pow(1.5,Math.floor(e/10)+1)*(i+1)*Math.pow(s+1,2.2)*5+500)"
+  },
+  "protocol": {
+    "evidence": "static sender, listener and generated encoder; no packet capture",
+    "c2s": {
+      "opcode": 5150,
+      "body": "no message argument",
+      "sender": {
+        "start": 3542924,
+        "end": 3542985,
+        "sha256": "74e21a32feeaadf4c99fedcdd056ccfbcb117369186b30d9df667b024497a2b3"
+      }
+    },
+    "s2c": {
+      "opcode": 86,
+      "message": "store.StoreRspMsg",
+      "listener": {
+        "start": 3544943,
+        "end": 3545030,
+        "sha256": "dc6abc4342b04d028fc8bf7d7156a427ad8692f5decc77a3a49c691e9a44a08a"
+      },
+      "decode": {
+        "start": 4844268,
+        "end": 4844330,
+        "sha256": "320d2e3e883bfeeabe47ddbb2814e70de6b61661baa89ee491a86ee9082e5fd2"
+      },
+      "alias": {
+        "start": 4841879,
+        "end": 4841925,
+        "sha256": "cc48582d4717617d46baee4dde7214052eb275d8b14dfb9d95ace172f87a72d1"
+      },
+      "encoder": {
+        "start": 11933701,
+        "end": 11935849,
+        "sha256": "0173039963449806096f145ceb1d604633bf07f567d490858f03481c6eb8ea62"
+      },
+      "fields": [
+        {
+          "field": 3,
+          "wireType": 0,
+          "type": "bool",
+          "name": "strengResult"
+        },
+        {
+          "field": 4,
+          "wireType": 0,
+          "type": "int32",
+          "name": "strengthenGrade"
+        },
+        {
+          "field": 5,
+          "wireType": 0,
+          "type": "int32",
+          "name": "pos"
+        },
+        {
+          "field": 6,
+          "wireType": 0,
+          "type": "int32",
+          "name": "objectId"
+        },
+        {
+          "field": 7,
+          "wireType": 0,
+          "type": "int32",
+          "name": "bagType"
+        }
+      ]
+    }
+  },
+  "generated": {
+    "path": "generated/ForgeEnhancementCost.java",
+    "sha256": "f124338a0c365d3f1170f9ad8e33b1acf7346d812774a7efad64b90d52f3dbab"
+  },
+  "comparison": {
+    "inputs": [
+      "NeedGrades",
+      "Profile",
+      "strengthenGrade"
+    ],
+    "equipmentRows": 750,
+    "catalogCases": 25851,
+    "boundaryCases": 6,
+    "mismatches": 0,
+    "samples": [
+      {
+        "input": [
+          0,
+          0,
+          0
+        ],
+        "js": 507,
+        "java": 507
+      },
+      {
+        "input": [
+          1,
+          5,
+          0
+        ],
+        "js": 537,
+        "java": 537
+      },
+      {
+        "input": [
+          9,
+          4,
+          0
+        ],
+        "js": 537,
+        "java": 537
+      },
+      {
+        "input": [
+          10,
+          4,
+          0
+        ],
+        "js": 556,
+        "java": 556
+      },
+      {
+        "input": [
+          11,
+          3,
+          1
+        ],
+        "js": 706,
+        "java": 706
+      },
+      {
+        "input": [
+          80,
+          5,
+          159
+        ],
+        "js": 67893547,
+        "java": 67893547
+      }
+    ]
+  }
+}

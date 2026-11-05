@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "autoforge.external-editors.v2.4",
+  "mode": "READ_ONLY",
+  "roots": [],
+  "sources": [],
+  "rules": [
+    {
+      "id": "forge.common.enhancement.gold",
+      "editorReferences": [],
+      "matches": 0
+    },
+    {
+      "id": "forge.common.enhancement.rate",
+      "editorReferences": [],
+      "matches": 0
+    },
+    {
+      "id": "attributes.fighting-capacity",
+      "editorReferences": [],
+      "matches": 0
+    },
+    {
+      "id": "quest.condition.vocabulary",
+      "editorReferences": [],
+      "matches": 0
+    }
+  ],
+  "warnings": [],
+  "skippedLinks": [],
+  "skippedSensitive": 0,
+  "skippedOversized": 0,
+  "limits": {
+    "maxFiles": 2000,
+    "maxBytesPerFile": 1048576,
+    "maxTotalBytes": 16777216,
+    "maxReferencesPerRule": 32,
+    "maxDirectories": 512,
+    "maxDepth": 24
+  },
+  "truncated": {
+    "files": false,
+    "bytes": false,
+    "references": false,
+    "directories": false,
+    "depth": false
+  },
+  "filesSeen": 0,
+  "directoriesSeen": 0,
+  "totalBytes": 0,
+  "evidencePolicy": {
+    "formLocation": "STATIC_ONLY",
+    "correctWrite": "NOT_PROVEN",
+    "removalAuthorizedByMissingEvidence": false
+  },
+  "gaps": [
+    "No root is scanned unless explicitly supplied. Configuration/credential names, links, dependencies, backups and binaries are excluded.",
+    "Form and write-call locations do not prove request authorization, correct data mutation, auditing or persistence. Validate request/readback/relogin separately.",
+    "The bounded lexical scan does not resolve dynamic includes, PHP execution, routes, DB schemas or runtime sessions. No script, SQL or HTTP request is executed."
+  ]
+}

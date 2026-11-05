@@ -1,0 +1,104 @@
+{
+  "rule": "attributes.fighting-capacity",
+  "status": "JAVA_JS_PARITY_PASSED",
+  "source": {
+    "path": "js/bundle_release-ad60bfe795.js",
+    "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+  },
+  "spanConvention": "UTF-8 bytes; start inclusive, end exclusive",
+  "rules": [
+    {
+      "id": "player",
+      "method": "calculatePlayerFightCapacity",
+      "source": {
+        "start": 500902,
+        "end": 501994,
+        "sha256": "59b7ba22a5dc036190d034a31ab62b46aa3a9ceea0cb248046b66bc4e31befc8"
+      }
+    },
+    {
+      "id": "guard",
+      "method": "calculateGuardFightCapacity",
+      "source": {
+        "start": 501994,
+        "end": 502375,
+        "sha256": "6613b3335219c7e114474c42dfa8c1e15df77d8bbcdbe18c1ae07315e2343b77"
+      }
+    },
+    {
+      "id": "rareWeapon",
+      "method": "calculateRareWeaponFightCapacity",
+      "source": {
+        "start": 502375,
+        "end": 502815,
+        "sha256": "42879b7c45c6503f553168e25240c634967836f07b342de79c55d0a2f90db795"
+      }
+    }
+  ],
+  "inputs": {
+    "stats": [
+      "power",
+      "agility",
+      "intel",
+      "physi",
+      "captain",
+      "attack",
+      "defence",
+      "magicattack",
+      "magicdefence",
+      "live",
+      "conat",
+      "forcehit",
+      "parry",
+      "fireResi",
+      "waterResi",
+      "windResi",
+      "electResi",
+      "darkResi",
+      "lightResi",
+      "reduceResi",
+      "defensePenetration",
+      "criticalResistance",
+      "parryPenetration"
+    ],
+    "basePercentWeights": [
+      "power",
+      "intel",
+      "physi",
+      "agility",
+      "captain",
+      "attack",
+      "magicattack",
+      "defence",
+      "magicdefence",
+      "live",
+      "conat",
+      "forcehit",
+      "parry"
+    ],
+    "rates": [
+      "attackRate",
+      "magicAttackRate",
+      "defenceRate",
+      "liveRate",
+      "conatRate",
+      "forcehitRate",
+      "parryRate"
+    ]
+  },
+  "comparison": {
+    "cases": 843,
+    "fixtures": 281,
+    "mismatches": 0,
+    "oracle": "Independent reviewed JS transcription; deterministic seed 1729"
+  },
+  "generated": {
+    "path": "generated/ClientFightCapacity.java",
+    "sha256": "5db8ebb6103500a31035038f2d516a09e8d025c41fb247d7689a6294a11cde85"
+  },
+  "limitations": [
+    "Base weights and conversion rates must be supplied from resolved authoritative character state; no defaults inferred.",
+    "Does not aggregate equipment, skills, pets or buffs; their final attribute vectors are inputs.",
+    "No database, protocol dispatch or runtime integration is enabled."
+  ]
+}

@@ -1,0 +1,1018 @@
+{
+  "schemaVersion": "autoforge.integration-contracts.v2.3",
+  "mode": "static-read-only",
+  "rules": [
+    {
+      "id": "forge.common.enhancement.gold",
+      "methods": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/ForgeStrengthenService.java",
+          "method": "strengthen",
+          "signature": "@Transactional public Result strengthen(long characterId, byte[] body)",
+          "startLine": 34,
+          "endLine": 84,
+          "sha256": "019c8c6dc08192c7973fb30fe9550bf8cfe342e7ec067d0ffbf589f6a52c2e54",
+          "bodySha256": "319397c4c220ce3eeb94da2c786721e558bcde124b58b9c29c0b338d27fe4ae8",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "handlers": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleItemStrengthen",
+          "signature": "private List<OutgoingMessage> handleItemStrengthen(Frame frame, ConnectionState state) throws ProtocolException",
+          "startLine": 2340,
+          "endLine": 2361,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "425587995360db27c9f684b4f8f34cde001296780a48de69883b83fec522cda7",
+          "messages": [
+            "ItemMessages.ItemMovedListMsg"
+          ],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "protocol": [
+        {
+          "name": "C_ITEM_STRENGTHEN",
+          "value": 5150,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 46,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "C2S",
+          "directionConfidence": "incoming_dispatch_case",
+          "handler": "handleItemStrengthen",
+          "dispatch": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 268,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_BAG_MOVE_UPDATE",
+          "value": 115,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 72,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 1124,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_PLAYER_INFO",
+          "value": 3,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 83,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 385,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": null,
+          "value": 86,
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "line": 2349,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_literal_respond_call",
+          "handler": "handleItemStrengthen",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "attributes": [
+        "NeedGrades",
+        "Profile",
+        "strengthenGrade",
+        "StrengthenMax",
+        "gold",
+        "persisted forge slots"
+      ],
+      "unresolved": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/ForgeStrengthenService.java",
+          "line": 4,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/BagService.java",
+          "line": 47,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "limits": [
+        "Java method extraction is lexical and conservative; unsupported signatures remain unresolved.",
+        "Protocol entries are static observations, not captured or validated messages.",
+        "Handler messages list only direct new *Msg constructors and is incomplete for builders/delegation."
+      ]
+    },
+    {
+      "id": "forge.common.enhancement.rate",
+      "methods": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/ForgeStrengthenService.java",
+          "method": "strengthen",
+          "signature": "@Transactional public Result strengthen(long characterId, byte[] body)",
+          "startLine": 34,
+          "endLine": 84,
+          "sha256": "019c8c6dc08192c7973fb30fe9550bf8cfe342e7ec067d0ffbf589f6a52c2e54",
+          "bodySha256": "319397c4c220ce3eeb94da2c786721e558bcde124b58b9c29c0b338d27fe4ae8",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "handlers": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleItemStrengthen",
+          "signature": "private List<OutgoingMessage> handleItemStrengthen(Frame frame, ConnectionState state) throws ProtocolException",
+          "startLine": 2340,
+          "endLine": 2361,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "425587995360db27c9f684b4f8f34cde001296780a48de69883b83fec522cda7",
+          "messages": [
+            "ItemMessages.ItemMovedListMsg"
+          ],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "protocol": [
+        {
+          "name": "C_ITEM_STRENGTHEN",
+          "value": 5150,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 46,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "C2S",
+          "directionConfidence": "incoming_dispatch_case",
+          "handler": "handleItemStrengthen",
+          "dispatch": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 268,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_BAG_MOVE_UPDATE",
+          "value": 115,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 72,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 1124,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_PLAYER_INFO",
+          "value": 3,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 83,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 385,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": null,
+          "value": 86,
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "line": 2349,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_literal_respond_call",
+          "handler": "handleItemStrengthen",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "attributes": [
+        "strengthenGrade",
+        "material Property1",
+        "StrengthenMax",
+        "gold",
+        "controlled RNG"
+      ],
+      "unresolved": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/ForgeStrengthenService.java",
+          "line": 5,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/BagService.java",
+          "line": 47,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/ForgeStrengthenService.java",
+          "line": 22,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "limits": [
+        "Java method extraction is lexical and conservative; unsupported signatures remain unresolved.",
+        "Protocol entries are static observations, not captured or validated messages.",
+        "Handler messages list only direct new *Msg constructors and is incomplete for builders/delegation."
+      ]
+    },
+    {
+      "id": "attributes.fighting-capacity",
+      "methods": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+          "method": "BareHeroAttributes",
+          "signature": "public BareHeroAttributes(int maxHp, int physicalAttack, int magicAttack, int physicalDefence, int magicDefence, int forceHit, int parry, int fightingCapacity, int troopVolume)",
+          "startLine": 20,
+          "endLine": 25,
+          "sha256": "d000d46dec46cd3a4c185bc3cea71b688121a04af82df3f015f5e568e9dbc18d",
+          "bodySha256": "4158e550127a0d2ef5c5d4e806e2916004012c0b9086681aa09f16c9bbe0215b",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+          "method": "BareHeroAttributes",
+          "signature": "public BareHeroAttributes(int maxHp, int physicalAttack, int magicAttack, int physicalDefence, int magicDefence, int forceHit, int parry, int fightingCapacity)",
+          "startLine": 26,
+          "endLine": 31,
+          "sha256": "d000d46dec46cd3a4c185bc3cea71b688121a04af82df3f015f5e568e9dbc18d",
+          "bodySha256": "3f12e416d3eded1c3af4d12ffd34ec6e9f8582969047eddfc51329819f6b5a61",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+          "method": "calculate",
+          "signature": "public static BareHeroAttributes calculate(JsonNode hero, int potentialPoints)",
+          "startLine": 33,
+          "endLine": 35,
+          "sha256": "d000d46dec46cd3a4c185bc3cea71b688121a04af82df3f015f5e568e9dbc18d",
+          "bodySha256": "26813b8343f08284f1022d855140cb9231a38ea45f1870df5facdb80615d79f8",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+          "method": "calculate",
+          "signature": "public static BareHeroAttributes calculate(JsonNode hero, int potentialPoints, ToIntFunction<String> attribute)",
+          "startLine": 43,
+          "endLine": 46,
+          "sha256": "d000d46dec46cd3a4c185bc3cea71b688121a04af82df3f015f5e568e9dbc18d",
+          "bodySha256": "c59a574bb2ede3d5bd455e27e8056c05a00e3fe0a2531158778314deba441cba",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+          "method": "calculate",
+          "signature": "public static BareHeroAttributes calculate(JsonNode hero, int potentialPoints, ToIntFunction<String> attribute, Modifiers bonus)",
+          "startLine": 76,
+          "endLine": 134,
+          "sha256": "d000d46dec46cd3a4c185bc3cea71b688121a04af82df3f015f5e568e9dbc18d",
+          "bodySha256": "a4317a845620c52db2cba6f7ce62d0194280133a1e0a63776b150262432934b9",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "method": "HeroProfile",
+          "signature": "public HeroProfile(int templateId, int job, int maxHp, int defaultSkill, List<Integer> learnedSkills, List<Integer> learnedSons, int fightingCapacity)",
+          "startLine": 883,
+          "endLine": 888,
+          "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb",
+          "bodySha256": "c795f6befd24cd6e06976c5a49bdee9eb6a5e92f2fffad11def87668deb8ec3a",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "method": "heroProfile",
+          "signature": "public HeroProfile heroProfile(int templateId, int grade)",
+          "startLine": 919,
+          "endLine": 951,
+          "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb",
+          "bodySha256": "1c66eb5bc3b9c867d0a7f15b9ba02d51cf0f8b72888f0a828214db1d45590ba6",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "method": "heroProfileFor",
+          "signature": "public HeroProfile heroProfileFor(long characterId, int templateId, int grade)",
+          "startLine": 953,
+          "endLine": 959,
+          "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb",
+          "bodySha256": "2aed165b1e9cb95f3d5829cdab10fa70de934c2c624fa0f76d5f2f51ff2d32d4",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "method": "effectiveHeroAttributes",
+          "signature": "public BareHeroAttributes effectiveHeroAttributes(long characterId, int templateId, int grade)",
+          "startLine": 961,
+          "endLine": 964,
+          "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb",
+          "bodySha256": "7f1777475abe68d8613a5c37f438e763e337d0e6d53d881db00fb04a8621fae0",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "method": "heroAttributes",
+          "signature": "public BareHeroAttributes heroAttributes(int templateId, int grade)",
+          "startLine": 978,
+          "endLine": 992,
+          "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb",
+          "bodySha256": "70eca20d2cba798891d8941fae3f941016c8362fa4cf6ad3cc0062edd6049f83",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "method": "heroStats",
+          "signature": "private Stats heroStats(long characterId, int templateId, int grade)",
+          "startLine": 1055,
+          "endLine": 1059,
+          "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb",
+          "bodySha256": "e94125897a265f65effee666eb83a2ea7dd1272212415e250aff9358421c0ad0",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/EffectiveHeroAttributeService.java",
+          "method": "calculate",
+          "signature": "public BareHeroAttributes calculate(long characterId, int templateId, int grade)",
+          "startLine": 32,
+          "endLine": 140,
+          "sha256": "34374fa993da93c961e7825c94072df08f5abe8fcaa266f2739b22ac92e95ee8",
+          "bodySha256": "40990bdeaaf3cbcb0da1b44dcebbebfae5297af9bb56dc7688a1b3edfbb99a38",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "handlers": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleBagMove",
+          "signature": "private List<OutgoingMessage> handleBagMove(Frame frame, ConnectionState state) throws ProtocolException",
+          "startLine": 2242,
+          "endLine": 2259,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "8410293be4b3a8e79189e5918e4361f91ce359fa7921c02a03a732127332a406",
+          "messages": [],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleBagUse",
+          "signature": "private List<OutgoingMessage> handleBagUse(Frame frame, ConnectionState state) throws ProtocolException",
+          "startLine": 2262,
+          "endLine": 2279,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "fd289a69a375a91905b8d045a0b4cb84aad57136fc96bd35409f26ba743f0b59",
+          "messages": [],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "bagResponses",
+          "signature": "private List<OutgoingMessage> bagResponses(Frame frame, ConnectionState state, BagService.Outcome outcome) throws ProtocolException",
+          "startLine": 2432,
+          "endLine": 2507,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "0771fabc3f129e7fd2b315ae706ce0fb78efca715976d6072c12481ade636417",
+          "messages": [
+            "ItemMessages.ItemMovedListMsg",
+            "ArmyMessages.ArmyUpdatedGridMsg",
+            "ItemMessages.TransInfoMsg",
+            "EnergyMessages.DataResetMsg"
+          ],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "heroCard",
+          "signature": "private HeroCard heroCard(CharacterRow character) throws ProtocolException",
+          "startLine": 2711,
+          "endLine": 2784,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "f657ba99e8e8455f079a774f82be834ebbbf333368da7dc9742ec05337fdcdff",
+          "messages": [
+            "HeroMessages.SimpleHeroInfoMsg"
+          ],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "protocol": [
+        {
+          "name": "C_BAG_MOVE",
+          "value": 5005,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 36,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "C2S",
+          "directionConfidence": "incoming_dispatch_case",
+          "handler": "handleBagMove",
+          "dispatch": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 265,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "C_BAG_USEITEM",
+          "value": 5006,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 40,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "C2S",
+          "directionConfidence": "incoming_dispatch_case",
+          "handler": "handleBagUse",
+          "dispatch": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 273,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_BAG_MOVE_UPDATE",
+          "value": 115,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 72,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 1124,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_PLAYER_INFO",
+          "value": 3,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 83,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 385,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_C_HERO_INFO",
+          "value": 113,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 168,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 626,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "C_ARMY_UPDATE_GRID",
+          "value": 5181,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 385,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "UNRESOLVED",
+          "directionConfidence": "enum_value_only",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "attributes": [
+        "resolved primary attributes",
+        "equipment and passive contributions",
+        "base percent weights",
+        "conversion rates",
+        "resistances"
+      ],
+      "unresolved": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+          "line": 17,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+          "line": 882,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "limits": [
+        "Java method extraction is lexical and conservative; unsupported signatures remain unresolved.",
+        "Protocol entries are static observations, not captured or validated messages.",
+        "Handler messages list only direct new *Msg constructors and is incomplete for builders/delegation."
+      ]
+    },
+    {
+      "id": "quest.condition.vocabulary",
+      "methods": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleCampaignExit",
+          "signature": "private List<OutgoingMessage> handleCampaignExit(Frame frame, ConnectionState state)",
+          "startLine": 1139,
+          "endLine": 1162,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "0cde345f9b4e4151c0ea8075ac26cdd9ed570dc6e07c72595a364d3f670a739e",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleBuildingInit",
+          "signature": "private List<OutgoingMessage> handleBuildingInit(Frame frame, ConnectionState state)",
+          "startLine": 1699,
+          "endLine": 1779,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "722f988b66e89c1346f44a8bcd8c1035fdab999f66086a60fcb7c6dd3d6ca743",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "handleWorldRequest",
+          "signature": "private List<OutgoingMessage> handleWorldRequest(Frame frame, ConnectionState state) throws ProtocolException",
+          "startLine": 2045,
+          "endLine": 2148,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "e5ebfcc76d8c2e1eb3cf183f002b3e015452f9deef975e52f04957ee02603f6c",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "bagResponses",
+          "signature": "private List<OutgoingMessage> bagResponses(Frame frame, ConnectionState state, BagService.Outcome outcome) throws ProtocolException",
+          "startLine": 2432,
+          "endLine": 2507,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "0771fabc3f129e7fd2b315ae706ce0fb78efca715976d6072c12481ade636417",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "handlers": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+          "method": "bagResponses",
+          "signature": "private List<OutgoingMessage> bagResponses(Frame frame, ConnectionState state, BagService.Outcome outcome) throws ProtocolException",
+          "startLine": 2432,
+          "endLine": 2507,
+          "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639",
+          "bodySha256": "0771fabc3f129e7fd2b315ae706ce0fb78efca715976d6072c12481ade636417",
+          "messages": [
+            "ItemMessages.ItemMovedListMsg",
+            "ArmyMessages.ArmyUpdatedGridMsg",
+            "ItemMessages.TransInfoMsg",
+            "EnergyMessages.DataResetMsg"
+          ],
+          "evidence": "static_method_body",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "protocol": [
+        {
+          "name": "U_C_QUEST_UPDATED",
+          "value": 112,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 153,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "UNRESOLVED",
+          "directionConfidence": "enum_value_only",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "name": "U_QUEST_UPDATED",
+          "value": 112,
+          "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+          "line": 300,
+          "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d",
+          "direction": "S2C",
+          "directionConfidence": "outgoing_respond_call",
+          "response": {
+            "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+            "line": 1151,
+            "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+          },
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "attributes": [
+        "CondictionType",
+        "Para1..Para4",
+        "quest event type",
+        "persisted progress",
+        "reward idempotency"
+      ],
+      "unresolved": [
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/gameplay/CampaignRunService.java",
+          "line": 26,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        },
+        {
+          "path": "apps/game-server/src/main/java/com/wartuneultra/server/tutorial/TutorialService.java",
+          "line": 43,
+          "reason": "NO_SUPPORTED_CONTAINING_METHOD",
+          "evidenceContext": {
+            "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+            "environmentId": "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "testId": "integration-contracts.mjs",
+            "evidenceRunId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+            "scope": "STATIC_EXTRACTION_NOT_LIVE"
+          }
+        }
+      ],
+      "limits": [
+        "Java method extraction is lexical and conservative; unsupported signatures remain unresolved.",
+        "Protocol entries are static observations, not captured or validated messages.",
+        "Handler messages list only direct new *Msg constructors and is incomplete for builders/delegation."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/login/GameLoginHandler.java",
+      "sha256": "874b428ca71b3aecc934460d5a1c5dbb3b0d41ed3510527ffdc06e4a60d4d639"
+    },
+    {
+      "path": "modules/protocol-legacy/src/main/java/com/wartuneultra/protocol/Opcodes.java",
+      "sha256": "024cdf29f6c9c59127fcd133cf09df015df4e5341f5cac82156177805465b39d"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/ForgeStrengthenService.java",
+      "sha256": "019c8c6dc08192c7973fb30fe9550bf8cfe342e7ec067d0ffbf589f6a52c2e54"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/inventory/BagService.java",
+      "sha256": "a3e6d7f96f98afad0cebf6db4d71a286c73bcca734249126f9f001093e4d5851"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BareHeroAttributes.java",
+      "sha256": "d000d46dec46cd3a4c185bc3cea71b688121a04af82df3f015f5e568e9dbc18d"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/BattleService.java",
+      "sha256": "141478b09e2086dc74b9f2366ff5fe7996e6065c8824558862f9ee11a65b5cfb"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/battle/EffectiveHeroAttributeService.java",
+      "sha256": "34374fa993da93c961e7825c94072df08f5abe8fcaa266f2739b22ac92e95ee8"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/gameplay/CampaignRunService.java",
+      "sha256": "7972ffbd236728f2146418dd21c4324e5a71a7abdaeb0da243e2423f79a98215"
+    },
+    {
+      "path": "apps/game-server/src/main/java/com/wartuneultra/server/tutorial/TutorialService.java",
+      "sha256": "0b4460cb0454d42fbe8856f4c3e670270b405fe72442c397cd3adb9b429913a0"
+    }
+  ],
+  "gaps": [],
+  "evidenceContext": {
+    "runId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+    "recordedAt": "2026-11-05T16:08:04.420Z",
+    "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+    "dirty": false,
+    "environment": {
+      "kind": "SOURCE_CHECKOUT",
+      "platform": "win32",
+      "backend": "C:\\WartuneUltra\\autoforge-release-v24\\java-v1",
+      "deployedCommit": null,
+      "liveJarSha256": null,
+      "runtimeVerification": "NOT_PERFORMED"
+    },
+    "test": {
+      "id": "integration-contracts.mjs",
+      "kind": "STATIC_EXTRACTION",
+      "result": "OBSERVATION_ONLY"
+    },
+    "transferToLive": "NOT_PROVEN_FOR_LIVE"
+  }
+}

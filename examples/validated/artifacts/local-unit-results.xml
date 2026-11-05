@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="asset finds renamed hashed file and refuses ambiguous versions" time="0.009963" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\assets.test.mjs"/>
+	<testcase name="output cannot overwrite client tree" time="0.000410" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\assets.test.mjs"/>
+	<testcase name="numeric compiler rejects arbitrary calls and keeps floating-point division" time="0.000780" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\assets.test.mjs"/>
+	<testcase name="captures deterministic file membership and hashes, never secret contents" time="0.183687" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="refuses stale service, migration, admin, protocol and build hashes" time="0.279142" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="detects added and deleted files even without Git" time="0.054187" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="different destination root and invalid snapshot descriptors are refused" time="0.021930" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="managed generated targets and build outputs are excluded for first install and idempotency" time="0.048498" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="critical linked source roots are refused" time="0.006335" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="unchanged critical bytes do not permit another Git commit" time="0.552650" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="a snapshot whose Git identity was unreadable cannot authorize apply" time="0.031330" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-guard.test.mjs"/>
+	<testcase name="records real lines, hashes and old/v2 dependencies without reading other files" time="0.015556" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-map.test.mjs"/>
+	<testcase name="comments, strings and generated definitions do not become consumers" time="0.008763" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-map.test.mjs"/>
+	<testcase name="unknown architecture stays unresolved and result lists are capped" time="0.006929" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-map.test.mjs"/>
+	<testcase name="missing Java root errors instead of producing an empty success" time="0.002397" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-map.test.mjs"/>
+	<testcase name="linked Java files are skipped and linked backend roots are refused" time="0.007189" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-map.test.mjs"/>
+	<testcase name="missing optional assessment stays unclassified" time="0.000400" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="assessment validates snapshot but remains reviewer-declared" time="0.003050" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="rejects missing commit and stale source/commit declarations" time="0.003328" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="functional needs passed runtime and test evidence" time="0.007430" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="divergent needs independent comparison and unknown statuses are rejected" time="0.004700" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="rejects escaped, repeated and unscoped source files" time="0.002514" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="Git provenance scopes tracked and untracked changes to backend" time="0.550472" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="non-repository is explicit and never invents a commit" time="0.037371" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="each declared evidence requires its own commit, environment, test and runtime artifact identity" time="0.006154" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="a hash-checked video alone cannot establish functional test evidence" time="0.005969" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\backend-provenance.test.mjs"/>
+	<testcase name="extracts pure linear methods with explicit indexed inputs" time="0.001636" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\capacity.test.mjs"/>
+	<testcase name="fails closed for missing or duplicate definitions" time="0.000244" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\capacity.test.mjs"/>
+	<testcase name="rejects unreviewed calls, side effects, and control flow" time="0.000313" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\capacity.test.mjs"/>
+	<testcase name="reference separates rare-weapon primary weights from guard" time="0.000328" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\capacity.test.mjs"/>
+	<testcase name="context ties exact methods, lexical calls, protocol and SQL to hashes without claiming proof" time="0.011648" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\causal-context.test.mjs"/>
+	<testcase name="stale expected sources refuse a misleading context" time="0.013508" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\causal-context.test.mjs"/>
+	<testcase name="empty scope is unresolved rather than absent" time="0.007814" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\causal-context.test.mjs"/>
+	<testcase name="bounded lists explicitly report omitted context" time="0.008046" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\causal-context.test.mjs"/>
+	<testcase name="expected source cannot escape backend root" time="0.011175" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\causal-context.test.mjs"/>
+	<testcase name="CI log evidence roundtrips byte-for-byte through timestamped gh logs" time="0.008329" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\ci-evidence.test.mjs"/>
+	<testcase name="truncated evidence writes nothing" time="0.003245" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\ci-evidence.test.mjs"/>
+	<testcase name="tampered bytes fail the hash" time="0.004106" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\ci-evidence.test.mjs"/>
+	<testcase name="path traversal and duplicate bundles rejected" time="0.003176" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\ci-evidence.test.mjs"/>
+	<testcase name="existing evidence cannot be overwritten" time="0.004574" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\ci-evidence.test.mjs"/>
+	<testcase name="missing reports fail emission" time="0.003972" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\ci-evidence.test.mjs"/>
+	<testcase name="records SQL table evidence, DDL migration, admin candidates and immutable hashes" time="0.022822" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\data-admin-map.test.mjs"/>
+	<testcase name="comments do not fabricate SQL references; optional admin/migration directories stay explicit" time="0.008229" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\data-admin-map.test.mjs"/>
+	<testcase name="caps evidence and reports truncation" time="0.010896" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\data-admin-map.test.mjs"/>
+	<testcase name="missing Java source root fails instead of declaring schema absent" time="0.005497" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\data-admin-map.test.mjs"/>
+	<testcase name="rejects junction roots and skips linked files/directories" time="0.010682" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\data-admin-map.test.mjs"/>
+	<testcase name="discovers discriminators, byte offsets and stable results without changing inputs" time="0.014077" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\discover.test.mjs"/>
+	<testcase name="ignores backup extensions, rejects ambiguous main bundles" time="0.009297" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\discover.test.mjs"/>
+	<testcase name="caps search results, reports truncation and invalid catalogs" time="0.010334" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\discover.test.mjs"/>
+	<testcase name="recovers partial protobuf fields without executing generated code" time="0.009100" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\discover.test.mjs"/>
+	<testcase name="no implicit editor roots, parser requires named paths, roots are unique" time="0.004260" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\external-editors.test.mjs"/>
+	<testcase name="forms and write candidates stay separate and never prove correct persistence" time="0.007385" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\external-editors.test.mjs"/>
+	<testcase name="credentials, configurations, vendor, backups and binary-looking sources are skipped" time="0.007549" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\external-editors.test.mjs"/>
+	<testcase name="reports deterministic file/reference/byte bounds" time="0.005101" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\external-editors.test.mjs"/>
+	<testcase name="links are skipped inside a root and linked roots are refused" time="0.003315" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\external-editors.test.mjs"/>
+	<testcase name="external snapshots reject modified, added, removed and incompletely scanned sources" time="0.012486" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\external-editors.test.mjs"/>
+	<testcase name="dry-run creates nothing; apply inserts isolated package and is idempotent" time="0.172445" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="installs one public generated enum with methods" time="0.095059" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="updates its own intact managed file but refuses manual edits" time="0.186337" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="unmanaged collision prevents all writes" time="0.035713" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="rejects unvalidated, tampered, path escaping and duplicate inputs" time="0.040675" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="rejects wrong class, package and additional top-level classes" time="0.042182" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="rechecks target and source snapshots before write" time="0.052860" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="changed manifest or source invalidates a prepared plan" time="0.064616" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="rejects a symlinked generated source" time="0.015407" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs">
+		<skipped type="skipped" message="Symlink privilege unavailable"/>
+	</testcase>
+	<testcase name="rejects symlinked source and target ancestors" time="0.015802" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="apply requires a prepared backend snapshot and blocks stale service, migration and added sources" time="0.097715" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integrate.test.mjs"/>
+	<testcase name="extracts overloaded exact methods and ignores braces in comments and strings" time="0.000454" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integration-contracts.test.mjs"/>
+	<testcase name="unsupported signatures and unicode escapes remain unresolved" time="0.000158" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integration-contracts.test.mjs"/>
+	<testcase name="resolves service method, actual dispatch and literal S2C with provenance" time="0.022045" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integration-contracts.test.mjs"/>
+	<testcase name="changed/missing reference sources cannot become exact method facts" time="0.010047" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\integration-contracts.test.mjs"/>
+	<testcase name="prepares four explicit tasks and exact input positions without claiming runtime success" time="0.073041" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\prepare.test.mjs"/>
+	<testcase name="backend references become task pointers; preparation never installs into backend" time="0.247688" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\prepare.test.mjs"/>
+	<testcase name="tampered evidence prevents preparation" time="0.046480" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\prepare.test.mjs"/>
+	<testcase name="freshly prepared snapshot permits install and then blocks backend changes" time="0.547992" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\prepare.test.mjs"/>
+	<testcase name="enriched tasks expose unverified states, no live schema claims, and preserve reviewer work" time="0.071587" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\queue-details.test.mjs"/>
+	<testcase name="MySQL preflight contains only read-only queries and rejects malformed table names" time="0.000288" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\queue-details.test.mjs"/>
+	<testcase name="upsert column update is not invented as a SQL table dependency" time="0.007500" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\queue-details.test.mjs"/>
+	<testcase name="preflight policy rejects writes and side effects disguised as SELECT" time="0.000563" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\queue-details.test.mjs"/>
+	<testcase name="diagnostic update affected wording is not a table dependency" time="0.009346" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\queue-details.test.mjs"/>
+	<testcase name="CLI validates options and preserves paths with spaces" time="0.000806" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\run.test.mjs"/>
+	<testcase name="failed discovery revokes a prior validated manifest with exact failed phase" time="0.008370" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\run.test.mjs"/>
+	<testcase name="discovery-only produces no installable success and needs no Java" time="0.008449" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\run.test.mjs"/>
+	<testcase name="missing artifacts remain unverified rather than satisfying a passed claim" time="0.000127" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="JSON reports match exact test, commit and environment with hashed bytes" time="0.002812" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="runtime reports must match deployed commit and JAR identity" time="0.004829" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="tampered, missing or escaped files are rejected" time="0.002590" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="stale commit, environment, test ID and failure cannot support passed evidence" time="0.060964" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="JSON reports require unique checks and consistent results" time="0.008890" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="JUnit suites validate actual testcase counts but supply no deployment identity" time="0.003557" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="JUnit rejects hidden failures, declared count mismatches and malformed structure" time="0.000560" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="JUnit never expands entities, namespaces or processing instructions" time="0.000198" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="opaque logs or video establish only integrity and never a passing test" time="0.001828" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="junctions and duplicate descriptors cannot escape the evidence root" time="0.007029" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="accepts Node native JUnit flattened testcase roots and still rejects failures" time="0.000964" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\test-artifacts.test.mjs"/>
+	<testcase name="verifies artifacts and optional client provenance without writes" time="0.023017" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects invalid success flag and missing evidence" time="0.013432" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects tampered generated Java and evidence bytes" time="0.020206" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects evidence/manifest disagreement and failed comparisons" time="0.023838" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects stale client and missing client root" time="0.013323" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects path escapes and duplicate classes" time="0.011039" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects missing and contradictory source provenance" time="0.017716" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<testcase name="rejects generated directory junctions before reading files" time="0.008877" classname="test" file="C:\WartuneUltra\autoforge-v2-work\tools\autoforge-v2\tests\verify.test.mjs"/>
+	<!-- tests 103 -->
+	<!-- suites 0 -->
+	<!-- pass 102 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 1 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 4334.8865 -->
+</testsuites>

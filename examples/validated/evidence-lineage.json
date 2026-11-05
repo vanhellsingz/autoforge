@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "runId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+  "recordedAt": "2026-11-05T16:08:04.420Z",
+  "environments": {
+    "checkout:65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c": {
+      "kind": "SOURCE_CHECKOUT",
+      "platform": "win32",
+      "backend": "C:\\WartuneUltra\\autoforge-release-v24\\java-v1",
+      "deployedCommit": null,
+      "liveJarSha256": null,
+      "runtimeVerification": "NOT_PERFORMED"
+    }
+  },
+  "backend": {
+    "status": "VERSIONED",
+    "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+    "repoRoot": "C:/WartuneUltra/autoforge-release-v24",
+    "backendPath": "java-v1",
+    "dirty": false,
+    "trackedChanges": [],
+    "untrackedChanges": [],
+    "counts": {
+      "tracked": 0,
+      "untracked": 0
+    },
+    "truncated": false,
+    "dirtyCoverage": "Tracked and untracked non-ignored files within backend; target/node_modules/dist excluded. No file contents are read by Git status."
+  },
+  "artifacts": [
+    {
+      "path": "capacity.evidence.json",
+      "sha256": "108f32a6f7c871f353e6915a21c90a3b1a07db66ad72f3407531ccf4054c1ed0",
+      "rule": "attributes.fighting-capacity",
+      "commit": null,
+      "commitStatus": "UNVERSIONED",
+      "backendContextCommit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+      "environment": {
+        "kind": "LOCAL_COMPARISON",
+        "platform": "win32",
+        "node": "v24.21.0",
+        "javac": "javac 21.0.12.1",
+        "deployedCommit": null,
+        "liveJarSha256": null
+      },
+      "producer": "capacity.mjs",
+      "test": {
+        "id": "attributes.fighting-capacity",
+        "kind": "NUMERIC_PARITY",
+        "result": "PASSED_FOR_RECORDED_CORPUS",
+        "comparison": {
+          "cases": 843,
+          "fixtures": 281,
+          "mismatches": 0,
+          "oracle": "Independent reviewed JS transcription; deterministic seed 1729"
+        }
+      },
+      "sources": [
+        {
+          "path": "js/bundle_release-ad60bfe795.js",
+          "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+        }
+      ],
+      "scope": "CLIENT_RULE_ONLY_NOT_DEPLOYED_GAMEPLAY",
+      "transferToLive": "NOT_PROVEN_FOR_LIVE"
+    },
+    {
+      "path": "forge-cost.evidence.json",
+      "sha256": "37d9076d6d1939cb10055c6d5167d777021bfae5fa705ae0e357b7e6b8a194d0",
+      "rule": "forge.common.enhancement.gold",
+      "commit": null,
+      "commitStatus": "UNVERSIONED",
+      "backendContextCommit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+      "environment": {
+        "kind": "LOCAL_COMPARISON",
+        "platform": "win32",
+        "node": "v24.21.0",
+        "javac": "javac 21.0.12.1",
+        "deployedCommit": null,
+        "liveJarSha256": null
+      },
+      "producer": "forge-cost.mjs",
+      "test": {
+        "id": "forge.common.enhancement.gold",
+        "kind": "NUMERIC_PARITY",
+        "result": "PASSED_FOR_RECORDED_CORPUS",
+        "comparison": {
+          "inputs": [
+            "NeedGrades",
+            "Profile",
+            "strengthenGrade"
+          ],
+          "equipmentRows": 750,
+          "catalogCases": 25851,
+          "boundaryCases": 6,
+          "mismatches": 0,
+          "samples": [
+            {
+              "input": [
+                0,
+                0,
+                0
+              ],
+              "js": 507,
+              "java": 507
+            },
+            {
+              "input": [
+                1,
+                5,
+                0
+              ],
+              "js": 537,
+              "java": 537
+            },
+            {
+              "input": [
+                9,
+                4,
+                0
+              ],
+              "js": 537,
+              "java": 537
+            },
+            {
+              "input": [
+                10,
+                4,
+                0
+              ],
+              "js": 556,
+              "java": 556
+            },
+            {
+              "input": [
+                11,
+                3,
+                1
+              ],
+              "js": 706,
+              "java": 706
+            },
+            {
+              "input": [
+                80,
+                5,
+                159
+              ],
+              "js": 67893547,
+              "java": 67893547
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "path": "js/bundle_release-ad60bfe795.js",
+          "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+        },
+        {
+          "path": "libs/protobuf-bundles-1f16c1f251.js",
+          "sha256": "8d3784607e1a5f7652a5466501db2e3880fe4e967f8e00b80d5caa800587ac6e"
+        },
+        {
+          "path": "res/release/config/t_s_itemtemplate-43b07d7a92.json",
+          "sha256": "871734f953ef5fd9eba0483a19f72405d2e05cd263cade3224f52fe9c09eca37"
+        }
+      ],
+      "scope": "CLIENT_RULE_ONLY_NOT_DEPLOYED_GAMEPLAY",
+      "transferToLive": "NOT_PROVEN_FOR_LIVE"
+    },
+    {
+      "path": "forge-rate.evidence.json",
+      "sha256": "3c921753fb5d18ea108d993dd936cf6c18362bcf50e9cd8ce80915531da26605",
+      "rule": "forge.common.enhancement.rate",
+      "commit": null,
+      "commitStatus": "UNVERSIONED",
+      "backendContextCommit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+      "environment": {
+        "kind": "LOCAL_COMPARISON",
+        "platform": "win32",
+        "node": "v24.21.0",
+        "javac": "javac 21.0.12.1",
+        "deployedCommit": null,
+        "liveJarSha256": null
+      },
+      "producer": "forge-rate.mjs",
+      "test": {
+        "id": "forge.common.enhancement.rate",
+        "kind": "NUMERIC_PARITY",
+        "result": "PASSED_FOR_RECORDED_CORPUS",
+        "comparison": {
+          "inputs": [
+            "strengthenGrade",
+            "property1",
+            "bonusApplied"
+          ],
+          "rateCases": 1936,
+          "guardCases": 9,
+          "riskCases": 121,
+          "javaParity": "passed",
+          "mismatches": 0,
+          "samples": [
+            {
+              "grade": 0,
+              "property1": 0,
+              "rate": 100
+            },
+            {
+              "grade": 1,
+              "property1": 0,
+              "rate": 90
+            },
+            {
+              "grade": 5,
+              "property1": 0,
+              "rate": 50
+            },
+            {
+              "grade": 9,
+              "property1": 0,
+              "rate": 10
+            },
+            {
+              "grade": 10,
+              "property1": 0,
+              "rate": 10
+            },
+            {
+              "grade": 11,
+              "property1": 0,
+              "rate": 10
+            },
+            {
+              "grade": 50,
+              "property1": 0,
+              "rate": 10
+            },
+            {
+              "grade": 0,
+              "property1": 10,
+              "rate": 100
+            },
+            {
+              "grade": 11,
+              "property1": 20,
+              "rate": 30
+            },
+            {
+              "grade": 11,
+              "property1": -50,
+              "rate": -40
+            }
+          ]
+        }
+      },
+      "sources": [
+        {
+          "path": "js/bundle_release-ad60bfe795.js",
+          "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+        }
+      ],
+      "scope": "CLIENT_RULE_ONLY_NOT_DEPLOYED_GAMEPLAY",
+      "transferToLive": "NOT_PROVEN_FOR_LIVE"
+    },
+    {
+      "path": "quest-conditions.evidence.json",
+      "sha256": "50378cb4b19bd70d5f7e6f8eb47df038a932ac5855701061e83ab540da04879f",
+      "rule": "quest.condition.vocabulary",
+      "commit": null,
+      "commitStatus": "UNVERSIONED",
+      "backendContextCommit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+      "environment": {
+        "kind": "LOCAL_COMPARISON",
+        "platform": "win32",
+        "node": "v24.21.0",
+        "javac": "javac 21.0.12.1",
+        "deployedCommit": null,
+        "liveJarSha256": null
+      },
+      "producer": "quest-conditions.mjs",
+      "test": {
+        "id": "quest.condition.vocabulary",
+        "kind": "STATIC_VOCABULARY_EXTRACTION",
+        "result": "OBSERVATION_ONLY"
+      },
+      "sources": [
+        {
+          "path": "js/bundle_release-ad60bfe795.js",
+          "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+        },
+        {
+          "path": "res/release/config/t_s_questcondiction-257a97b1b1.json",
+          "sha256": "f22e2813e81e883caa90c4833918c4681fbb4daea5433c3381e6179eb51d9c30"
+        },
+        {
+          "path": "res/release/config/t_s_questtemplate-f38c33000a.json",
+          "sha256": "f8b47f9395a9aa8d3b1ec027e3648e3ba206a739da2850e9bfcefa3389cecba4"
+        }
+      ],
+      "scope": "CLIENT_RULE_ONLY_NOT_DEPLOYED_GAMEPLAY",
+      "transferToLive": "NOT_PROVEN_FOR_LIVE"
+    }
+  ],
+  "staticAnalysis": {
+    "runId": "65d6993f-2bf8-43ed-a60e-ab14e4dc3d1c",
+    "recordedAt": "2026-11-05T16:08:04.420Z",
+    "commit": "65cd3732380d8ae197d483a0c16abe59a5949e6b",
+    "dirty": false,
+    "environment": {
+      "kind": "SOURCE_CHECKOUT",
+      "platform": "win32",
+      "backend": "C:\\WartuneUltra\\autoforge-release-v24\\java-v1",
+      "deployedCommit": null,
+      "liveJarSha256": null,
+      "runtimeVerification": "NOT_PERFORMED"
+    },
+    "test": {
+      "id": "AutoForge 2.3 preparation",
+      "kind": "STATIC_EXTRACTION",
+      "result": "OBSERVATION_ONLY"
+    },
+    "transferToLive": "NOT_PROVEN_FOR_LIVE"
+  },
+  "deployment": {
+    "status": "NOT_INSPECTED",
+    "commit": null,
+    "jarSha256": null
+  },
+  "limitations": [
+    "A commit is recorded only when Git resolves it. Unversioned client assets remain identified by source hashes.",
+    "Numerical comparisons do not prove backend integration, admin persistence or deployed behavior.",
+    "Old-branch evidence cannot be transferred to the currently deployed artifact without matching commit/hashes, environment and a fresh test."
+  ]
+}

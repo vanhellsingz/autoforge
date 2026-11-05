@@ -1,0 +1,62 @@
+{
+  "version": "2.4",
+  "status": "PURE_RULES_VALIDATED",
+  "doctor": {
+    "node": "v24.21.0",
+    "javac": "javac 21.0.12.1"
+  },
+  "files": [
+    {
+      "path": "generated/ClientFightCapacity.java",
+      "sha256": "5db8ebb6103500a31035038f2d516a09e8d025c41fb247d7689a6294a11cde85",
+      "className": "ClientFightCapacity"
+    },
+    {
+      "path": "generated/ForgeEnhancementCost.java",
+      "sha256": "f124338a0c365d3f1170f9ad8e33b1acf7346d812774a7efad64b90d52f3dbab",
+      "className": "ForgeEnhancementCost"
+    },
+    {
+      "path": "generated/ForgeEnhancementRules.java",
+      "sha256": "c346309fdc959b30fd697c2937aaa03e8a904a375c459a8b186d2c52cb1aa566",
+      "className": "ForgeEnhancementRules"
+    },
+    {
+      "path": "generated/QuestConditionType.java",
+      "sha256": "520fd76b9157f7d5a17e0bf213980bb32a7c347bb8cc477af91440cb1597ee99",
+      "className": "QuestConditionType"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "capacity.evidence.json",
+      "sha256": "108f32a6f7c871f353e6915a21c90a3b1a07db66ad72f3407531ccf4054c1ed0"
+    },
+    {
+      "path": "forge-cost.evidence.json",
+      "sha256": "37d9076d6d1939cb10055c6d5167d777021bfae5fa705ae0e357b7e6b8a194d0"
+    },
+    {
+      "path": "forge-rate.evidence.json",
+      "sha256": "3c921753fb5d18ea108d993dd936cf6c18362bcf50e9cd8ce80915531da26605"
+    },
+    {
+      "path": "quest-conditions.evidence.json",
+      "sha256": "50378cb4b19bd70d5f7e6f8eb47df038a932ac5855701061e83ab540da04879f"
+    }
+  ],
+  "elapsedMs": 18792,
+  "runtime": "NOT_INTEGRATED",
+  "deployment": "NOT_RUN",
+  "next": [
+    "Ler PROMPT_ARENA.md",
+    "Executar integrate.mjs para prévia e depois --apply",
+    "Conectar fórmulas aos serviços e validar transações/persistência",
+    "Compilar backend e aplicar pelo procedimento autorizado existente"
+  ],
+  "arena": {
+    "status": "READY_FOR_IMPLEMENTATION",
+    "entry": "COMECE_AQUI.md",
+    "tasks": 4
+  }
+}

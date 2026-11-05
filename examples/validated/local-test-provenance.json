@@ -1,0 +1,187 @@
+{
+  "testId": "node --test --test-isolation=none --test-reporter=junit tools/autoforge-v2/tests/*.test.mjs",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.21.0"
+  },
+  "headCommit": "a8a6925563a06d5f167ae3d23bf20d4a50f25656",
+  "scope": "LOCAL_AUTOFORGE_WORKTREE_ONLY_NOT_BACKEND_GAMEPLAY",
+  "counts": {
+    "passed": 102,
+    "skipped": 1,
+    "tests": 103,
+    "failed": 0
+  },
+  "ciRun": "NOT_THIS_ARTIFACT",
+  "workingTreeModified": true,
+  "artifact": {
+    "sha256": "1c33068ce443b0b1a5827a50a2e539905bc93719165ee6a922b054bc2957e195",
+    "path": "artifacts/local-unit-results.xml"
+  },
+  "sourceHashes": [
+    {
+      "path": "assets.mjs",
+      "sha256": "581f7cc9a170820de0735ce887142eb118131835ed6db795fe57c6d0dfeb084d"
+    },
+    {
+      "path": "backend-guard.mjs",
+      "sha256": "80fec3ebf2884f79f9f774694a0d3e601bbf6396d066ef021a15baabf6da057b"
+    },
+    {
+      "path": "backend-map.mjs",
+      "sha256": "34475deca1f78e5cd176db8ef82648183288be668aa3105334e3b9f51b57cad7"
+    },
+    {
+      "path": "backend-provenance.mjs",
+      "sha256": "7e1fc6e33b5794988a99ae69cc0713c2e185dc957d787aba248945bda94518eb"
+    },
+    {
+      "path": "capacity.mjs",
+      "sha256": "500b16cce1efc3d7fc836f130df6fbc80730dd199df923809bc082e65b41cf67"
+    },
+    {
+      "path": "causal-context.mjs",
+      "sha256": "20c5b53c60b197abf50614116a19fe87a5823a586fe135a6e72778976e79dd13"
+    },
+    {
+      "path": "ci-evidence.mjs",
+      "sha256": "b29a455542754df754bd6bff4e7f0f101fc95cfe14205bc356d0266a1f41272f"
+    },
+    {
+      "path": "data-admin-map.mjs",
+      "sha256": "eeebae395caeae83c2d90d7c80d57beac4fa223fc0f362190ec5b2000dbb3768"
+    },
+    {
+      "path": "discover.mjs",
+      "sha256": "e340fa69c6c8dc5e8f79ba3ed00520e9e136ed5c9c56d7fea99da66c1d59d0a9"
+    },
+    {
+      "path": "domain-guide.mjs",
+      "sha256": "eb534a64823dd1178c3b6366cf034bd071560f0a05345e98cbd1bc782ed99b79"
+    },
+    {
+      "path": "evidence-lineage.mjs",
+      "sha256": "d4484024dda799da564018100b8cc1910be0d13f78e2a403e57fabb93af08736"
+    },
+    {
+      "path": "external-editors.mjs",
+      "sha256": "1800eaf9c223b058953f1ea99cfbeb15cabd1d499959b87d141cb1e27a193bea"
+    },
+    {
+      "path": "forge-cost.mjs",
+      "sha256": "75113b3b32cb662ade04fc6937795b612ebb1d9dc33f064d2411672f2f102b32"
+    },
+    {
+      "path": "forge-rate.mjs",
+      "sha256": "a1a6525695474b0eea04223bee5463f12df7a75c7758c34de09973db60f89ebb"
+    },
+    {
+      "path": "integrate.mjs",
+      "sha256": "7908f23054c6436c91e0abd196579d60b4381d723ced7cd7fdadab02afe73741"
+    },
+    {
+      "path": "integration-contracts.mjs",
+      "sha256": "363a7767944efd8d0b0e120c1f9fc6b29fa397944e5e4d1923768717863d81ee"
+    },
+    {
+      "path": "numeric-ast.mjs",
+      "sha256": "3a8659f0eb801323f29ee83f6b6095d197333c599ad6a02ac6cd5f990080df56"
+    },
+    {
+      "path": "prepare.mjs",
+      "sha256": "c5ed293a04543c36cbc41ce4e595e5977dff65d114053f772d764955e072b404"
+    },
+    {
+      "path": "quest-conditions.mjs",
+      "sha256": "22816dcbc5ecdc6886c9af314fb3a60fafab63e374b74985911395549704dbb3"
+    },
+    {
+      "path": "queue-details.mjs",
+      "sha256": "4b6caaf95ffc31febc225cd6757c150eed96559912ee80fe8fb609872c1f3f3b"
+    },
+    {
+      "path": "record-validation.mjs",
+      "sha256": "4396e55c735c51765aa05a677b014226ef6444fefe1857ce8742f2443dbe6cbb"
+    },
+    {
+      "path": "run.mjs",
+      "sha256": "72c3f25932082a7e1ea2bcce3437fe4ccbeb3b0c095e6f04ac7f45fea346e84f"
+    },
+    {
+      "path": "test-artifacts.mjs",
+      "sha256": "77c75c17d3f9a32c7124fe9518695ee0e39448d62b32e3a5704ff5c2bcc65278"
+    },
+    {
+      "path": "verify.mjs",
+      "sha256": "733ca7089a734155fa3fd452862ef53f60ea99b97807eaef511bceb66a5a8248"
+    },
+    {
+      "path": "tests/assets.test.mjs",
+      "sha256": "a7d1c5ebac2b25128413e92ed8181ad0261ef94a4a19192a2767b0c626ff0278"
+    },
+    {
+      "path": "tests/backend-guard.test.mjs",
+      "sha256": "8d51947b2c36f5192caebe0a62c546b68b2612ebed1b0c01a4a6822eabed4c24"
+    },
+    {
+      "path": "tests/backend-map.test.mjs",
+      "sha256": "c352ab536f59231a289301f155971440489d64b553cadc39a3df5bcdbd6af273"
+    },
+    {
+      "path": "tests/backend-provenance.test.mjs",
+      "sha256": "7b36dd3799e9601a29674f3af687cc87f01b1561a3189e50853a2f5400dd27d9"
+    },
+    {
+      "path": "tests/capacity.test.mjs",
+      "sha256": "19613bf16ca6efa0f5d09af8baa53b61053c6e587b34017cc9ba2356bb1bc1ab"
+    },
+    {
+      "path": "tests/causal-context.test.mjs",
+      "sha256": "55951aaad30c90b252c77ed73daf5e70ff7c97d6f468ab67f730d7a82c55d3a2"
+    },
+    {
+      "path": "tests/ci-evidence.test.mjs",
+      "sha256": "bd574f76da7afb7badc7383f7379294a086afc14032b10f93a7c628836e7a247"
+    },
+    {
+      "path": "tests/data-admin-map.test.mjs",
+      "sha256": "e63687d958d95002e70ce233869af67ca21fbeeef825bd549664ded33e0ff7ec"
+    },
+    {
+      "path": "tests/discover.test.mjs",
+      "sha256": "b24f3157e438770623ece46afa81c4ba6615033db5170e25f2031c1ddc0b773f"
+    },
+    {
+      "path": "tests/external-editors.test.mjs",
+      "sha256": "db83f1e876d468f293411fa8095196ddb94b3fda994b57d306187c3b6eac44a3"
+    },
+    {
+      "path": "tests/integrate.test.mjs",
+      "sha256": "2153d727999b85ca9e702c0a2a092f7d504ef1802c47839deda935b6679555b6"
+    },
+    {
+      "path": "tests/integration-contracts.test.mjs",
+      "sha256": "2c29b6514de8930af76c1a7337c0cdce48c255ec3d9d107dea63e8b3d4c041d9"
+    },
+    {
+      "path": "tests/prepare.test.mjs",
+      "sha256": "cd0f8ee65fecf39a6938be97fed50e3990a65cdbba8f6fd947ef1170ec15ef72"
+    },
+    {
+      "path": "tests/queue-details.test.mjs",
+      "sha256": "7b070524ed8b41098d9db8d1a037f53c57672424931db20b5974b72ef59d290d"
+    },
+    {
+      "path": "tests/run.test.mjs",
+      "sha256": "dff5ef49ede27ece164c637452ed344b8e2c3115b42e63b8e9c955fe68680b10"
+    },
+    {
+      "path": "tests/test-artifacts.test.mjs",
+      "sha256": "808c304b9a52cb38f8eb124c6eeec9f9e77848f369ce4426bf3cec76573b0985"
+    },
+    {
+      "path": "tests/verify.test.mjs",
+      "sha256": "5cc6e45a5414f31ee034dd674f21108bb1053104dbc21a709f35e10103e68d5f"
+    }
+  ]
+}

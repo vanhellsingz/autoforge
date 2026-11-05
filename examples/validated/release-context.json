@@ -1,0 +1,7 @@
+{
+  "note": "Fresh source snapshot only. Regenerate on active Arena checkout; no deployed JAR claim.",
+  "branch": "release/java-buildings-dev-20261102",
+  "deploymentStatusAtCheck": "NOT_INSPECTED",
+  "liveJarVerified": false,
+  "analyzedRelease": "65cd3732380d8ae197d483a0c16abe59a5949e6b"
+}

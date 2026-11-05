@@ -1,0 +1,153 @@
+{
+  "rule": "forge.common.enhancement.rate",
+  "sources": [
+    {
+      "path": "js/bundle_release-ad60bfe795.js",
+      "sha256": "3bb320e3d6e984179699cebb41f737d5a51198453f276de4d8de17c3e368dea7"
+    }
+  ],
+  "spanConvention": "UTF-8 byte offsets, inclusive start and exclusive end",
+  "client": {
+    "symbol": "getSuccessRate",
+    "definition": {
+      "start": 3781935,
+      "end": 3782100,
+      "sha256": "df756986c00c8d5b487f820c84dea54633debb4e7c56efe13d6d791bea14eebc"
+    },
+    "constants": {
+      "cJ.SUCCESS_RATE": {
+        "value": 100,
+        "evidence": {
+          "start": 3785889,
+          "end": 3785908,
+          "sha256": "33774512c882b0ec00f0c71dfa128bd999d96fda7cd3b7d7d7250a24d673bd22"
+        }
+      },
+      "cJ.RATE_STEP": {
+        "value": 10,
+        "evidence": {
+          "start": 3785909,
+          "end": 3785924,
+          "sha256": "c092de5706481cfa2642e2663c8e9c1b134f52ce4131ea7891848bcc67d48ffd"
+        }
+      }
+    },
+    "clamps": {
+      "min": 10,
+      "max": 100,
+      "finalMax": 100,
+      "property": "Property1"
+    },
+    "bonusField": "equip2.info.templateInfo.Property1",
+    "guard": {
+      "symbol": "checkCanIntensify",
+      "evidence": {
+        "start": 3782100,
+        "end": 3782415,
+        "sha256": "265c532bf6ce19ea0f3aae9fc3d6c04330f522828b1782da673c0df9050f522b"
+      },
+      "conditions": [
+        {
+          "order": 1,
+          "when": "cost > gold",
+          "messageKey": "store.utils.StoreHelper.command01"
+        },
+        {
+          "order": 2,
+          "when": "strengthenGrade >= StrengthenMax",
+          "messageKey": "store.utils.StoreHelper.command02"
+        }
+      ]
+    },
+    "confirm": {
+      "symbol": "onBtnConfirm",
+      "evidence": {
+        "start": 4842563,
+        "end": 4842652,
+        "sha256": "c9daabd7986ca1d5c93264840a62472ac9436788f4f4bd3e7e5186a6b10d1490"
+      },
+      "riskThreshold": 50
+    },
+    "send": {
+      "symbol": "strengthen",
+      "evidence": {
+        "start": 4843239,
+        "end": 4843472,
+        "sha256": "dddac13903b52b7b04a5b62c8708a2b9aad8a0de6cbfcd29f2206ef19e7d11d7"
+      },
+      "goldRecheck": "against the displayed txtCost, then U_C_ITEM_STRENGTHEN with no body"
+    }
+  },
+  "generated": {
+    "path": "generated/ForgeEnhancementRules.java",
+    "sha256": "c346309fdc959b30fd697c2937aaa03e8a904a375c459a8b186d2c52cb1aa566"
+  },
+  "comparison": {
+    "inputs": [
+      "strengthenGrade",
+      "property1",
+      "bonusApplied"
+    ],
+    "rateCases": 1936,
+    "guardCases": 9,
+    "riskCases": 121,
+    "javaParity": "passed",
+    "mismatches": 0,
+    "samples": [
+      {
+        "grade": 0,
+        "property1": 0,
+        "rate": 100
+      },
+      {
+        "grade": 1,
+        "property1": 0,
+        "rate": 90
+      },
+      {
+        "grade": 5,
+        "property1": 0,
+        "rate": 50
+      },
+      {
+        "grade": 9,
+        "property1": 0,
+        "rate": 10
+      },
+      {
+        "grade": 10,
+        "property1": 0,
+        "rate": 10
+      },
+      {
+        "grade": 11,
+        "property1": 0,
+        "rate": 10
+      },
+      {
+        "grade": 50,
+        "property1": 0,
+        "rate": 10
+      },
+      {
+        "grade": 0,
+        "property1": 10,
+        "rate": 100
+      },
+      {
+        "grade": 11,
+        "property1": 20,
+        "rate": 30
+      },
+      {
+        "grade": 11,
+        "property1": -50,
+        "rate": -40
+      }
+    ]
+  },
+  "gaps": [
+    "The empty 5150 packet alone does not resolve the second forge slot. Read persisted slot state; do not infer a zero material bonus.",
+    "Class-change equipment priced from catalog Gold/Rate is a separate branch not covered by this adapter."
+  ]
+}
