@@ -17,12 +17,14 @@ function unavailable(status,reason){return {status,commit:null,repoRoot:null,bac
  * A clean commit does not prove the code is functional or deployed.
  */
 export function backendProvenance(backendRoot){
- let root;try{root=realpathSync(resolve(backendRoot));}catch{return unavailable('UNVERSIONED','Backend directory is unavailable');}
+ // Native realpath expands Windows 8.3 names (RUNNER~1) as well as junctions.
+ // The JS implementation may retain short aliases while Git returns long names.
+ let root;try{root=realpathSync.native(resolve(backendRoot));}catch{return unavailable('UNVERSIONED','Backend directory is unavailable');}
  let repoRoot;
- try{repoRoot=realpathSync(git(root,['rev-parse','--show-toplevel']).trim());}
+ try{repoRoot=realpathSync.native(git(root,['rev-parse','--show-toplevel']).trim());}
  catch(error){const stderr=String(error.stderr??'');return unavailable(/not a git repository/i.test(stderr)?'UNVERSIONED':'GIT_UNAVAILABLE',error.code??'git repository could not be read');}
  const rel=relative(repoRoot,root);
- if(isAbsolute(rel)||rel==='..'||rel.startsWith('..'+sep))return unavailable('GIT_UNAVAILABLE','Backend is outside the discovered repository');
+ if(isAbsolute(rel)||rel==='..'||rel.startsWith('..'+sep))return {...unavailable('GIT_UNAVAILABLE','Backend is outside the discovered repository'),pathDiagnostic:{backend:root,repository:repoRoot,relative:posix(rel)}};
  let commit;
  try{commit=git(root,['rev-parse','--verify','HEAD']).trim();if(!COMMIT.test(commit))throw Error('Invalid HEAD');}
  catch(error){return {...unavailable('UNVERSIONED','Git repository has no readable HEAD commit'),repoRoot,backendPath:posix(rel)||'.'};}
