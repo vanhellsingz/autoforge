@@ -1,7 +1,7 @@
 import {verifyEvidenceArtifacts} from './test-artifacts.mjs';
 // Read-only provenance and reviewer declarations. No network, database or Git writes.
 import {execFileSync} from 'node:child_process';
-import {readFileSync,lstatSync} from 'node:fs';
+import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {resolve,relative,isAbsolute,sep,dirname} from 'node:path';
 
 const RULES=new Set(['forge.common.enhancement.gold','forge.common.enhancement.rate','attributes.fighting-capacity','quest.condition.vocabulary']);
@@ -9,7 +9,7 @@ const STATES=new Set(['absent','partial','functional','divergent']);
 const HASH=/^[a-f0-9]{64}$/i,COMMIT=/^[a-f0-9]{40,64}$/i;
 const posix=s=>s.replaceAll('\\','/');
 const limit=250;
-function git(cwd,args){return execFileSync('git',['-C',cwd,...args],{encoding:'utf8',timeout:10000,maxBuffer:4*1024*1024,stdio:['ignore','pipe','pipe']});}
+function git(cwd,args){return execFileSync('git',['-C',cwd,...args],{encoding:'utf8',timeout:10000,maxBuffer:4*1024*1024,stdio:['ignore','pipe','pipe'],env:{...process.env,GIT_OPTIONAL_LOCKS:'0'}});}
 function unavailable(status,reason){return {status,commit:null,repoRoot:null,backendPath:null,dirty:null,trackedChanges:[],untrackedChanges:[],dirtyCoverage:'NOT_CHECKED',reason};}
 
 /** Reports actual local HEAD, scoped dirty state and untracked non-ignored files.
@@ -17,9 +17,9 @@ function unavailable(status,reason){return {status,commit:null,repoRoot:null,bac
  * A clean commit does not prove the code is functional or deployed.
  */
 export function backendProvenance(backendRoot){
- const root=resolve(backendRoot);
+ let root;try{root=realpathSync(resolve(backendRoot));}catch{return unavailable('UNVERSIONED','Backend directory is unavailable');}
  let repoRoot;
- try{repoRoot=git(root,['rev-parse','--show-toplevel']).trim();}
+ try{repoRoot=realpathSync(git(root,['rev-parse','--show-toplevel']).trim());}
  catch(error){const stderr=String(error.stderr??'');return unavailable(/not a git repository/i.test(stderr)?'UNVERSIONED':'GIT_UNAVAILABLE',error.code??'git repository could not be read');}
  const rel=relative(repoRoot,root);
  if(isAbsolute(rel)||rel==='..'||rel.startsWith('..'+sep))return unavailable('GIT_UNAVAILABLE','Backend is outside the discovered repository');

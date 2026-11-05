@@ -16,7 +16,7 @@ function packet(value,opcode=1){
  return Buffer.concat([header,bytes]);
 }
 async function fixture(t,{disconnect=false}={}){
- const commands=[],sockets=new Set(),timers=[];let port,closeCount=0;
+ const commands=[],sockets=new Set(),timers=[],socketErrors=[];let port,closeCount=0;
  const bytes=Buffer.from([0x00,0xff,0x80,0x01,0x5b,0x5d]);
  const pageUrl='http://127.0.0.1:5173/index.html';
  const server=createServer((request,response)=>{
@@ -24,11 +24,13 @@ async function fixture(t,{disconnect=false}={}){
   response.writeHead(200,{'content-type':'application/json'}).end(JSON.stringify([{type:'page',url:pageUrl,webSocketDebuggerUrl:`ws://127.0.0.1:${port}/devtools/page/fixture`}]))
  });
  server.on('upgrade',(request,socket)=>{
-  sockets.add(socket);socket.on('close',()=>{sockets.delete(socket);closeCount++;});
+  sockets.add(socket);socket.on('close',()=>{sockets.delete(socket);closeCount++;});socket.on('error',error=>{socketErrors.push(error.code??error.message);});
   const accept=createHash('sha1').update(request.headers['sec-websocket-key']+'258EAFA5-E914-47DA-95CA-C5AB0DC85B11').digest('base64');
   socket.write('HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: '+accept+'\r\n\r\n');
   let buffered=Buffer.alloc(0);
   socket.on('data',chunk=>{
+   // A peer can echo the close frame after the server already called end().
+   if(socket.destroyed||socket.writableEnded)return;
    buffered=Buffer.concat([buffered,chunk]);
    while(buffered.length>=2){
     const opcode=buffered[0]&15,masked=!!(buffered[1]&128);let length=buffered[1]&127,offset=2;
@@ -38,13 +40,14 @@ async function fixture(t,{disconnect=false}={}){
     const mask=masked?buffered.subarray(offset,offset+4):null;offset+=maskBytes;
     const body=Buffer.from(buffered.subarray(offset,offset+length));buffered=buffered.subarray(offset+length);
     if(mask)for(let i=0;i<body.length;i++)body[i]^=mask[i%4];
-    if(opcode===8){socket.end(packet(body,8));return;}
+    if(opcode===8){if(!socket.destroyed&&!socket.writableEnded)socket.end(packet(body,8));return;}
     if(opcode!==1)continue;
     const command=JSON.parse(body.toString('utf8'));commands.push(command.method);
+    if(socket.destroyed||socket.writableEnded)return;
     socket.write(packet(JSON.stringify({id:command.id,result:{}})));
     if(command.method==='Runtime.enable'){
      timers.push(setTimeout(()=>{
-      if(socket.destroyed)return;
+      if(socket.destroyed||socket.writableEnded)return;
       if(disconnect){socket.end(packet(Buffer.from([0x03,0xe9]),8));return;}
       socket.write(packet(JSON.stringify({method:'Network.webSocketFrameSent',params:{requestId:'socket-1',response:{opcode:2,mask:true,payloadData:bytes.toString('base64')}}})));
       socket.write(packet(JSON.stringify({method:'Network.webSocketFrameReceived',params:{requestId:'socket-1',response:{opcode:1,mask:false,payloadData:'reply-fixture'}}})));
@@ -56,7 +59,7 @@ async function fixture(t,{disconnect=false}={}){
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',()=>{port=server.address().port;resolve();});});
  t.after(async()=>{for(const timer of timers)clearTimeout(timer);for(const socket of sockets)socket.destroy();await new Promise(resolve=>server.close(resolve));});
  const root=mkdtempSync(join(tmpdir(),'autoforge-cdp-test-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
- return {endpoint:`http://127.0.0.1:${port}`,pageUrl,out:join(root,'capture'),bytes,commands,get closeCount(){return closeCount;}};
+ return {endpoint:`http://127.0.0.1:${port}`,pageUrl,out:join(root,'capture'),bytes,commands,socketErrors,get closeCount(){return closeCount;}};
 }
 test('actual CDP observer captures real websocket traffic from an owned local fixture',async t=>{
  const f=await fixture(t);
@@ -70,7 +73,7 @@ test('actual CDP observer captures real websocket traffic from an owned local fi
  assert.equal(manifest.identity.commit,'a'.repeat(40));assert.equal(manifest.truncated,false);
  assert.deepEqual(f.commands,['Network.enable','Runtime.enable']);
  assert.equal(f.commands.some(m=>/Browser\.close|Page\.(close|reload|navigate)|Target\.close/.test(m)),false);
- await new Promise(resolve=>setTimeout(resolve,30));assert.equal(f.closeCount,1);
+ await new Promise(resolve=>setTimeout(resolve,30));assert.equal(f.closeCount,1);assert.deepEqual(f.socketErrors,[]);
 });
 test('actual CDP observer records an early debug transport close as interruption',async t=>{
  const f=await fixture(t,{disconnect:true});
@@ -79,4 +82,5 @@ test('actual CDP observer records an early debug transport close as interruption
  const {events}=readCapture(f.out);assert.ok(events.some(e=>e.kind==='error'&&e.data.message==='CDP connection closed during capture'));
  assert.ok(events.some(e=>e.data.event==='CDP_CAPTURE_ENDED'&&e.data.interrupted===true));
  assert.deepEqual(f.commands,['Network.enable','Runtime.enable']);
+ await new Promise(resolve=>setTimeout(resolve,30));assert.equal(f.closeCount,1);assert.deepEqual(f.socketErrors,[]);
 });

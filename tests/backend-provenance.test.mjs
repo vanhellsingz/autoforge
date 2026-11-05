@@ -38,7 +38,7 @@ test('Git provenance scopes tracked and untracked changes to backend',t=>{
  const root=fixture(t),backend=join(root,'java-v1');mkdirSync(backend);mkdirSync(join(root,'tools'));writeFileSync(join(backend,'Service.java'),'class Service{}');
  const git=args=>execFileSync('git',['-C',root,...args],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
  try{git(['init']);git(['add','java-v1/Service.java']);git(['-c','user.name=AutoForge Test','-c','user.email=autoforge-test@example.invalid','commit','-m','fixture']);}catch(e){if(e.code==='EPERM'||e.code==='ENOENT'){t.skip('Git subprocess unavailable');return;}throw e;}
- const clean=backendProvenance(backend);assert.equal(clean.status,'VERSIONED');assert.equal(clean.dirty,false);assert.match(clean.commit,/^[a-f0-9]{40}$/);
+ const clean=backendProvenance(backend);assert.equal(clean.status,'VERSIONED',JSON.stringify(clean));assert.equal(clean.dirty,false);assert.match(clean.commit,/^[a-f0-9]{40}$/);
  writeFileSync(join(root,'tools','scratch.mjs'),'tool change');assert.equal(backendProvenance(backend).dirty,false);
  writeFileSync(join(backend,'Service.java'),'class Service{int changed;}');writeFileSync(join(backend,'New.java'),'class New{}');
  const changed=backendProvenance(backend);assert.equal(changed.dirty,true);assert.equal(changed.trackedChanges[0].path,'Service.java');assert.equal(changed.untrackedChanges[0].path,'New.java');assert.equal(changed.commit,clean.commit);
