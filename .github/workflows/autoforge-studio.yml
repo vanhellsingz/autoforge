@@ -31,9 +31,20 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/autoforge-evidence"
           for file in *.mjs plus/*.mjs studio/*.mjs; do node --check "$file"; done
-          node --test --test-reporter=junit tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs > "$RUNNER_TEMP/autoforge-evidence/unit-results.xml"
+          if ! node --test --test-reporter=junit tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs > "$RUNNER_TEMP/autoforge-evidence/unit-results.xml"; then
+            cat "$RUNNER_TEMP/autoforge-evidence/unit-results.xml"
+            exit 1
+          fi
           node record-validation.mjs --junit "$RUNNER_TEMP/autoforge-evidence/unit-results.xml" --out "$RUNNER_TEMP/autoforge-evidence/unit-report.json" --environment "github-actions-${{ matrix.os }}"
       - name: Publish verifiable test evidence without artifact quota
         if: always()
         shell: bash
-        run: node ci-evidence.mjs emit "$RUNNER_TEMP/autoforge-evidence"
+        run: |
+          if [ -f "$RUNNER_TEMP/autoforge-evidence/unit-report.json" ]; then
+            node ci-evidence.mjs emit "$RUNNER_TEMP/autoforge-evidence"
+          elif [ -f "$RUNNER_TEMP/autoforge-evidence/unit-results.xml" ]; then
+            node studio/autoforge.mjs bridge --root "$RUNNER_TEMP/autoforge-evidence" --files unit-results.xml
+          else
+            echo '::error::Test process produced no evidence'
+            exit 1
+          fi
