@@ -1,5 +1,7 @@
 # AutoForge — branch Items & Logs
 
+**Três módulos acrescentados na mesma branch:** missões/evoluções, mapas/atividades e lojas. [Guia com os casos do jogo e prompt para o Arena](docs/GAMEPLAY_START.md). Entrada: `node studio/gameplay/autoforge.mjs help`. Nenhum módulo aplica alterações ao servidor.
+
 **Branch isolada:** `feature/items-logs-intelligence`. Base: main `a08cabd`. Esta entrega não altera o servidor nem a main usada pelo Arena.
 
 Cinco funções novas: índice pesquisável de itens, dossiês de campos/referências, cenários por contrato, coleta automática incremental de logs e diagnóstico de incidentes ligado aos itens.
