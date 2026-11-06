@@ -27,7 +27,7 @@ const HELP=['AutoForge Studio Next (Node 22+)','',
   'No action executes SQL, deploys, restarts services or patches the client.',
   'All output paths must be new; ambiguous/unsupported evidence stays UNVERIFIED.'].join('\n');
 
-function parse(argv) {
+function parseOptions(argv) {
   const opts={},pos=[];
   for(let i=0;i<argv.length;i++){
     const a=argv[i];
@@ -78,7 +78,7 @@ export async function main(argv){
   if(!argv.length||argv[0]==='help'||argv.includes('--help')){console.log(HELP);return {status:'HELP'};}
   const [command,...rest]=argv;
   if(['record','diagnose','generate','compare','audit','replay','bridge','import','bundle'].includes(command))return studioMain(argv);
-  const {opts,pos}=parse(rest);
+  const {opts,pos}=parseOptions(rest);
   let result;
   switch(command){
     case 'drift':{
