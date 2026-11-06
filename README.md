@@ -1,3 +1,11 @@
+# AutoForge — Core 2.4, Plus v1, Studio 2.5 e Studio Next 2.6
+
+**Novidades integradas do ZIP v3:** Drift Watch, matriz de lacunas cliente/Java, calibração conservadora de frames, comparação estatística e Evidence Pack. O recorder CDP, gerador de contratos Java21 e a ponte de evidências do Studio 2.5 permanecem ativos. Nada aplica código no Wartune automaticamente.
+
+[Guia Studio Next](docs/STUDIO_NEXT.md) · `node studio/next/autoforge.mjs help` · `npm test`
+
+---
+
 # AutoForge — Core 2.4, Plus v1 e Studio 2.5
 
 **Entrada para o Arena:** [guia do Studio](docs/STUDIO.md) · [mapa do repositório](docs/README.md) · [instruções de implementação](PROMPT_ARENA.md).

@@ -1,10 +1,18 @@
 {
- "name":"wartune-autoforge",
- "version":"2.5.0",
- "private":true,
- "description":"Evidence-led client rule extraction and Java integration workbench",
- "type":"module",
- "engines":{"node":">=22"},
- "bin":{"autoforge":"studio/autoforge.mjs"},
- "scripts":{"test":"node --test tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs","studio":"node studio/autoforge.mjs"}
+  "name": "wartune-autoforge",
+  "version": "2.6.0",
+  "private": true,
+  "description": "Evidence-led client rule extraction and Java integration workbench",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "autoforge": "studio/autoforge.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs studio/next/tests/*.test.mjs",
+    "studio": "node studio/autoforge.mjs",
+    "next": "node studio/next/autoforge.mjs"
+  }
 }
