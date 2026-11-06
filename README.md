@@ -1,5 +1,7 @@
 # AutoForge — auditoria de mapas e memória compartilhada
 
+**Novo `incident-replay`** compara uma ação por etapas, aponta a primeira diferença e perdas de itens alheios, encontra métodos candidatos e produz `ARENA.md`. Inclui reprodução real da direção da conversão de gemas com o decodificador Java isolado. [Comandos e instruções](docs/INCIDENT_REPLAY.md).
+
 **Entrega na main:** auditoria por fronteira do fluxo, detecção de regressões com baseline verificável, registro de capacidades com testes/revisão/aprovação e pacote de conhecimento reutilizável por qualquer agente. [Comece aqui: comandos e prompt para o Arena](docs/MAP_AUDIT_MEMORY.md).
 
 `node studio/gameplay/autoforge.mjs map-audit` · `node studio/learning/autoforge.mjs help`

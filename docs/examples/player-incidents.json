@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "gema-nivel-12",
+      "title": "Selecionar uma única gema de nível 12 para conversão",
+      "priority": "now",
+      "steps": [
+        {"id":"selecao","measure":"json","capture":"Na aba de conversão, registrar se é possível selecionar uma única gema de nível 12. Anotar origem, destino, vínculo e quantidade 1.","symbols":["workbenchAdmits"]},
+        {"id":"resposta","measure":"json","capture":"Registrar se a ação de converter ficou habilitada, se gerou pedido e qual foi a resposta e o resultado exibido.","symbols":["handleItemTransform","transform"]},
+        {"id":"bolsa","measure":"inventory","capture":"Exportar toda a bolsa antes e depois da tentativa, inclusive as gemas em outros slots. Conferir qualquer consumo ou concessão.","symbols":["snapshot"]}
+      ]
+    },
+    {
+      "id": "conversao-gema-nivel-1",
+      "title": "Sentido da conversão de nível 1 entre vida e DEFM e perda de outras gemas",
+      "priority": "now",
+      "steps": [
+        {"id":"selecao","measure":"json","capture":"Anotar qual gema de nível 1 (vida ou DEFM) foi selecionada como origem e qual como destino, seus templates e vínculos. Marcar outras gemas como sentinelas.","symbols":["snapshot"]},
+        {"id":"resultado","measure":"json","capture":"Registrar a decisão do servidor e o template e a quantidade do resultado apresentado. Manter origem e destino em campos distintos.","symbols":["handleItemTransform","transform"]},
+        {"id":"bolsa","measure":"inventory","capture":"Exportar toda a bolsa antes e depois, incluindo itens alheios à conversão. Conferir sinal do débito e do crédito por template e vínculo.","symbols":["snapshot"]},
+        {"id":"sentinelas","measure":"json","capture":"Comparar quantidades antes e depois por slot de origem, destino e sentinela. Incluir pilhas do mesmo template para revelar uma retirada na pilha errada.","symbols":["snapshot"]}
+      ]
+    },
+    {
+      "id": "formacao-tropas",
+      "title": "Formação de tropas e capacidade disponível",
+      "priority": "now",
+      "steps": [
+        {"id":"capacidade","measure":"json","capture":"Capturar nível, capacidade exibida, tropas possuídas e alocadas por tipo, quantidade livre e posições ocupadas antes da edição.","symbols":["populationUsed","snapshotLocked","castleYield"]},
+        {"id":"edicao","measure":"json","capture":"Registrar posição e quantidade solicitadas e a resposta ao salvar. Comparar a formação exibida e a capacidade utilizada depois da edição.","symbols":["handleArmyEdit","editFormation","editFightPosition"]},
+        {"id":"persistencia","measure":"json","capture":"Reabrir a formação e comparar posições, contagens e capacidade persistidas com as exibidas na tela.","symbols":["snapshotLocked","serialArmyBody"]}
+      ]
+    },
+    {
+      "id": "bau-fantasma",
+      "title": "Baú fantasma que aparece no chão após a morte de um monstro",
+      "priority": "now",
+      "steps": [
+        {"id":"mapa","measure":"json","capture":"Registrar encontro, mapa e monstro. Comparar a entidade visível no chão após a morte com o registro de criação e o estado no servidor.","symbols":["recordVictory","entryPackets"]},
+        {"id":"interacao","measure":"json","capture":"Observar o clique no baú do chão, a presença do pedido, a resposta e se a entidade desapareceu ou continuou bloqueando a interação.","symbols":["isNonCombatChest","openChest"]},
+        {"id":"bolsa","measure":"inventory","capture":"Capturar a bolsa completa antes e depois da interação para detectar consumo ou recompensa.","symbols":["snapshot"]}
+      ]
+    },
+    {
+      "id": "bau-bronze",
+      "title": "Preservar o baú de bronze que o jogador conseguiu abrir",
+      "priority": "preserve",
+      "steps": [
+        {"id":"abertura","measure":"json","capture":"Registrar localização, identificação do baú de bronze, condições de abertura, decisão do servidor e o que apareceu na tela.","symbols":["isNonCombatChest","openChest"]},
+        {"id":"bolsa","measure":"inventory","capture":"Comparar a bolsa completa antes e depois de abrir uma vez. Registrar o consumo e a recompensa realmente observados.","symbols":["grantChest","snapshot"]},
+        {"id":"estado","measure":"json","capture":"Reabrir a tela e observar o estado do baú e da recompensa. Se houver sorteio, registrar condições reproduzíveis para comparar os itens.","symbols":["resume","isNodeWon"]}
+      ]
+    },
+    {
+      "id": "campanha-persistida",
+      "title": "Preservar o progresso de campanha depois de entrar novamente",
+      "priority": "preserve",
+      "steps": [
+        {"id":"conclusao","measure":"json","capture":"Registrar campanha, nó, resultado e progresso após concluir o encontro. Separar vitória, recompensa entregue e estado de conclusão.","symbols":["recordVictory","handleCampaignFinish"]},
+        {"id":"saida","measure":"json","capture":"Capturar o progresso persistido ao sair e o estado que o cliente exibiu.","symbols":["exit","progress"]},
+        {"id":"relogin","measure":"json","capture":"Após um novo login da mesma conta, registrar nós liberados e concluídos e recompensa já recebida para a mesma campanha.","symbols":["resume","hasCompleted"]}
+      ]
+    },
+    {
+      "id": "exp-vip-19",
+      "title": "Medir EXP de VIP 19 e verificar a hipótese de bônus de 50%",
+      "priority": "now",
+      "steps": [
+        {"id":"condicoes","measure":"json","capture":"Fixar encontro, dificuldade, nível, VIP 19, bônus ativos e EXP inicial. Registrar a origem de cada parcela e as regras do catálogo identificado.","symbols":["vipInfoFor","findProgress"]},
+        {"id":"ganho","measure":"json","capture":"Medir EXP antes e depois do encontro. Separar EXP de combate, conclusão, bônus e arredondamento conforme observados.","symbols":["awardExperience","recordVictory"]},
+        {"id":"exibicao","measure":"json","capture":"Comparar o ganho persistido com o número exibido no cliente. Vincular o controle equivalente sem bônus à investigação da porcentagem.","symbols":["awardExperience"]}
+      ]
+    },
+    {
+      "id": "salao-herois",
+      "title": "Salão dos Heróis — investigação adiada",
+      "priority": "later",
+      "steps": [
+        {"id":"entrada","measure":"json","capture":"Quando a investigação for retomada, registrar acesso ao Salão, atividade selecionada, tentativas disponíveis e estado de conclusão antes da visita.","symbols":["joinAuthorized","select"]},
+        {"id":"resultado","measure":"json","capture":"Comparar entrada, resultado observado e estado exibido ao retornar. Distinguir contagem de tentativas de conclusão da atividade.","symbols":["victory","finish"]}
+      ]
+    }
+  ]
+}

@@ -6,12 +6,14 @@ import {readCapture} from './flight-recorder.mjs';import {correlateTrace,parseSe
 import {recordCdp} from './cdp-recorder.mjs';import {generateImplementation} from './contract-generator.mjs';
 import {compareAction} from './equivalence.mjs';import {auditInvariants} from './invariants.mjs';
 import {buildReplayPlan} from './replay-planner.mjs';import {packEvidence,importEvidence} from './evidence-bridge.mjs';
+import {runIncidentReplay} from './incident-replay.mjs';
 const HELP=`AutoForge Studio — six evidence-led tools (Node22 / Java21 for generated-code tests)
   record     --cdp http://127.0.0.1:9222 --page-url http://127.0.0.1:5173/index.html --out NEW_DIR
              [--seconds 30] [--capture-actions] [--commit SHA] [--environment windows-dev]
   diagnose   --capture DIR [--context causal-context.json] [--server-log FILE] --out NEW_DIR
   generate   --contract FILE [--backend JAVA_DIR] --out NEW_DIR
   compare    --reference ACTION.json --candidate ACTION.json --out NEW_DIR
+  incident-replay --cases CASES.json [--evidence DIR] [--backend JAVA_DIR] --out NEW_DIR
   audit      --action ACTION.json [--rules RULES.json] --out NEW_DIR
   replay     --capture DIR [--required-s2c 113,115] --out NEW_DIR
   bridge     --root REPORT_DIR --files events.jsonl,capture-manifest.json [--out NEW_DIR]
@@ -26,10 +28,11 @@ function output(path,protectedPaths=[]){if(!path)throw Error('--out NEW_DIR requ
 const save=(root,name,value)=>writeFileSync(join(root,name),JSON.stringify(value,null,2)+'\n',{flag:'wx'});
 function capture(o){const value=readCapture(o.capture);return value;}
 function opcodes(value){if(value===undefined)return [];const result=value.split(',').map(Number);if(result.some(n=>!Number.isSafeInteger(n)||n<0))throw Error('Invalid required S2C list');return result;}
-function normalizedArgs(args){const {opts,positional}=parseArgs(args,{bool:['captureActions'],list:[]});if(positional.length)throw Error('Unexpected positional argument');const allowed=new Set(['cdp','pageUrl','out','seconds','captureActions','commit','environment','capture','context','serverLog','contract','backend','reference','candidate','action','rules','requiredS2c','root','files','log','expectedSha256']);for(const k of Object.keys(opts))if(!allowed.has(k))throw Error('Unknown option: '+k);return opts;}
+function normalizedArgs(args){const {opts,positional}=parseArgs(args,{bool:['captureActions'],list:[]});if(positional.length)throw Error('Unexpected positional argument');const allowed=new Set(['cdp','pageUrl','out','seconds','captureActions','commit','environment','capture','context','serverLog','contract','backend','reference','candidate','action','rules','requiredS2c','root','files','log','expectedSha256','cases','evidence']);for(const k of Object.keys(opts))if(!allowed.has(k))throw Error('Unknown option: '+k);return opts;}
 export async function main(argv){
  const [cmd,...args]=argv;if(!cmd||cmd==='help'||args.includes('--help')){console.log(HELP);return {status:'HELP'}};
  const o=normalizedArgs(args);
+ if(cmd==='incident-replay')return runIncidentReplay({cases:json(o.cases),evidence:o.evidence,backend:o.backend,out:o.out});
  if(cmd==='record'){
   const controller=new AbortController(),stop=()=>controller.abort();process.once('SIGINT',stop);process.once('SIGTERM',stop);
   try{return await recordCdp({endpoint:o.cdp,pageUrl:o.pageUrl,out:o.out,identity:{commit:o.commit??null,environment:{name:o.environment??'windows-dev',kind:'BROWSER_OBSERVER'}},durationMs:Number(o.seconds??30)*1000,captureActions:!!o.captureActions,signal:controller.signal})}finally{process.off('SIGINT',stop);process.off('SIGTERM',stop)}

@@ -1,0 +1,10 @@
+{
+  "reference": {
+    "path": "ref.json",
+    "sha256": "31f0f1b8031465aa8ad6b0ba76a194cd1b2f88544db6d9982fcc3fc5a0cb46d3"
+  },
+  "candidate": {
+    "path": "java.json",
+    "sha256": "37563ad3a674bd0c720f3ac3561e7cd454ab1e42e2c201af0276b327830f9cd2"
+  }
+}

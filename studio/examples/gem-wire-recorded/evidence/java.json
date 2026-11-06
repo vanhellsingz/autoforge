@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "role": "candidate",
+  "caseId": "gem-wire-direction",
+  "contractDigest": "a12e78f9ebc6e43d39d286e891de1f637811f9917995cbc0f75a0358b2bceaea",
+  "identity": {
+    "commit": "bd19b3581981891ec82d339abba8bfbcf2b49254",
+    "environment": {
+      "name": "isolated-java-decoder",
+      "kind": "SOURCE_REPLAY"
+    },
+    "testId": "gem-wire-direction"
+  },
+  "clientDigest": "49549ecfd97e8cdb0fce1a6d54a27dc9e6d7758ee84ec8f6ae45c06cfdf4db09",
+  "action": {
+    "type": "gem-transform",
+    "inputs": {
+      "sourceTemplateId": 2050101,
+      "destinationTemplateId": 2050201,
+      "count": 1
+    }
+  },
+  "preconditions": {
+    "opcode": 8538,
+    "wireHex": "48b5907d5099917d5801"
+  },
+  "sessionId": "gem-wire-candidate",
+  "operationId": "convert-1",
+  "steps": [
+    {
+      "id": "decoded",
+      "sessionId": "gem-wire-candidate",
+      "operationId": "convert-1",
+      "value": {
+        "sourceTemplateId": 2050201,
+        "destinationTemplateId": 2050101,
+        "count": 1
+      }
+    }
+  ]
+}

@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p "$RUNNER_TEMP/autoforge-evidence"
-          for file in *.mjs plus/*.mjs studio/*.mjs studio/next/*.mjs studio/items/*.mjs studio/gameplay/*.mjs studio/learning/*.mjs; do node --check "$file"; done
+          for file in *.mjs plus/*.mjs studio/*.mjs studio/examples/*.mjs studio/next/*.mjs studio/items/*.mjs studio/gameplay/*.mjs studio/learning/*.mjs; do node --check "$file"; done
           if ! node --test --test-reporter=junit tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs studio/next/tests/*.test.mjs studio/items/tests/*.test.mjs studio/gameplay/tests/*.test.mjs studio/learning/tests/*.test.mjs > "$RUNNER_TEMP/autoforge-evidence/unit-results.xml"; then
             cat "$RUNNER_TEMP/autoforge-evidence/unit-results.xml"
             exit 1

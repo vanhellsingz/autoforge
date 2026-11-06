@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "gem-wire-direction",
+      "title": "Converter uma Gema de ATQ Nv. 1 em uma Gema de DEF Nv. 1",
+      "priority": "now",
+      "steps": [
+        {
+          "id": "decoded",
+          "measure": "json",
+          "capture": "IDs da gema consumida e da gema solicitada e quantidade no pacote 8538.",
+          "symbols": [
+            "decode"
+          ]
+        }
+      ]
+    }
+  ]
+}
