@@ -1,6 +1,6 @@
 {
   "name": "wartune-autoforge",
-  "version": "2.6.0",
+  "version": "2.7.0-omega",
   "private": true,
   "description": "Evidence-led client rule extraction and Java integration workbench",
   "type": "module",
@@ -8,7 +8,8 @@
     "node": ">=22"
   },
   "bin": {
-    "autoforge": "studio/autoforge.mjs"
+    "autoforge": "studio/autoforge.mjs",
+    "autoforge-omega": "omega.mjs"
   },
   "scripts": {
     "test": "node --test tests/*.test.mjs plus/tests/*.test.mjs studio/tests/*.test.mjs studio/next/tests/*.test.mjs studio/items/tests/*.test.mjs studio/gameplay/tests/*.test.mjs studio/learning/tests/*.test.mjs studio/slice/tests/*.test.mjs",
@@ -17,6 +18,7 @@
     "items": "node studio/items/autoforge.mjs",
     "gameplay": "node studio/gameplay/autoforge.mjs",
     "learning": "node studio/learning/autoforge.mjs",
-    "flow-console": "node studio/flow-console.mjs"
+    "flow-console": "node studio/flow-console.mjs",
+    "omega": "node omega.mjs"
   }
 }
