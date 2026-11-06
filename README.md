@@ -1,8 +1,16 @@
-# AutoForge — branch Items & Logs
+# AutoForge — auditoria de mapas e memória compartilhada
+
+**Entrega na main:** auditoria por fronteira do fluxo, detecção de regressões com baseline verificável, registro de capacidades com testes/revisão/aprovação e pacote de conhecimento reutilizável por qualquer agente. [Comece aqui: comandos e prompt para o Arena](docs/MAP_AUDIT_MEMORY.md).
+
+`node studio/gameplay/autoforge.mjs map-audit` · `node studio/learning/autoforge.mjs help`
+
+Estas ferramentas analisam dados e artefatos; não alteram o servidor, contas, banco nem fazem deploy. Um inventário completo não comprova que todos os mapas funcionam. Sem evidência atual, o resultado permanece `UNVERIFIED`.
+
+## Itens, logs e inteligência de gameplay preservados
 
 **Três módulos acrescentados na mesma branch:** missões/evoluções, mapas/atividades e lojas. [Guia com os casos do jogo e prompt para o Arena](docs/GAMEPLAY_START.md). Entrada: `node studio/gameplay/autoforge.mjs help`. Nenhum módulo aplica alterações ao servidor.
 
-**Branch isolada:** `feature/items-logs-intelligence`. Base: main `a08cabd`. Esta entrega não altera o servidor nem a main usada pelo Arena.
+**Origem preservada:** `feature/items-logs-intelligence`, base `a08cabd`, snapshot `65c6a95`. Os módulos abaixo estão incluídos nesta entrega; sua publicação não executa serviços no Windows.
 
 Cinco funções novas: índice pesquisável de itens, dossiês de campos/referências, cenários por contrato, coleta automática incremental de logs e diagnóstico de incidentes ligado aos itens.
 

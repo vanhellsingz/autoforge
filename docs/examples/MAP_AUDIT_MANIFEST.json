@@ -1,0 +1,15 @@
+{
+  "observations": [],
+  "baselines": [],
+  "bindings": [],
+  "journeys": [],
+  "projections": [],
+  "reportedSymptoms": [
+    {"caseId":"create-after-map-change","flow":"character-create","target":"account:new","description":"Relato: criar conta/personagem parou de funcionar após alterações de mapas. Ainda sem artefato, commit implantado ou causa comprovada."},
+    {"caseId":"ibalize-interior-entry","flow":"map-entry","target":"campaign:1004","description":"Relato: Exterior 9–11 acessível; Interior 11–13 fica carregando. Confirmar IDs no atlas atual antes de implementar."},
+    {"caseId":"arena-generated-opponent","flow":"arena-battle","target":"arena:generated-opponent","description":"Relato: adversários gerados aparecem; clicar escurece e bloqueia a interface. Registrar pedido, resposta, prepare/start e encerramento do wait."},
+    {"caseId":"worg-completion","flow":"campaign-run","target":"campaign:1001","description":"Relato: chefe vencido, mas campanha/missão continua não concluída. Separar vitória, evento da quest, conclusão, recompensa, saída e relogin."},
+    {"caseId":"hero-hall-false-completion","flow":"map-entry","target":"campaign:9000","description":"Relato: Salão dos Heróis aparece concluído sem visita; tentativas 0/1. Confirmar namespace e atividade no cliente. Tentativas e nível não provam conclusão."},
+    {"caseId":"blitz-confirm-stuck","flow":"blitz","target":"campaign:tribal-plateau-id-unresolved","description":"Print/relato: Platô Tribal permanece Em Blitz, sem resultado; Confirmar não encerra. Identificar ID no catálogo atual e rastrear job/estado, conclusão, mensagem de resultado, prontidão e callback de confirmação; não inventar um opcode de confirmação."}
+  ]
+}

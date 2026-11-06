@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';import {join} from 'node:path';import {crea
 import {captureBackendSnapshot,assertBackendSnapshot} from '../../backend-guard.mjs';
 import {backendProvenance} from '../../backend-provenance.mjs';import {extractJavaMethods} from '../../integration-contracts.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex');
-const TERMS={quests:/quest|mission|condiction|condition|tutorial|intensif|strengthen|enchant|evol|transfer|rebirth/i,world:/campaign|dungeon|arena|maze|labyrinth|catacomb|herohall|outercity|outcity|skycity|teleport|mapnode|scene|room|portal/i,shops:/shop|mall|store|purchase|buyitem|buygoods|exchange|wish|currency|balance|debit|wallet/i};
+const TERMS={quests:/quest|mission|condiction|condition|tutorial|intensif|strengthen|enchant|evol|transfer|rebirth/i,world:/campaign|dungeon|arena|maze|labyrinth|catacomb|herohall|outercity|outcity|skycity|teleport|mapnode|scene|room|portal|blitz|sweep/i,shops:/shop|mall|store|purchase|buyitem|buygoods|exchange|wish|currency|balance|debit|wallet/i,battle:/battle|rage|anger|fury|army|pawn|formation|soldier|blitz|sweep|chest|drop/i};
 /** Static navigation only. The snapshot records critical files and is never applied. */
 export function scanGameplayBackend({backend,maxFiles=2000,maxFileBytes=4*1024*1024,maxMethods=120}={}){
  for(const n of [maxFiles,maxFileBytes,maxMethods])if(!Number.isSafeInteger(n)||n<1)throw Error('Invalid backend scan bound');
