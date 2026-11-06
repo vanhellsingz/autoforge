@@ -2,6 +2,15 @@ name: AutoForge Windows flight recorder (manual observer)
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'Browser observation or read-only server log collection'
+        type: choice
+        options: [browser, server-logs]
+        default: browser
+      log_file:
+        description: 'Read-only file on the existing Windows runner (server-logs mode only)'
+        required: false
+        default: 'C:\WartuneUltra\logs\java-live.log'
       cdp:
         description: 'Existing local browser debugging endpoint on the registered runner'
         required: true
@@ -34,6 +43,7 @@ jobs:
           path: autoforge-observer
           persist-credentials: false
       - name: Observe existing browser only
+        if: ${{ inputs.mode != 'server-logs' }}
         shell: powershell
         env:
           CDP_ENDPOINT: ${{ inputs.cdp }}
@@ -52,9 +62,35 @@ jobs:
           & node @argv
           if($LASTEXITCODE -ne 0){throw 'Recorder failed; no service was started/stopped'}
       - name: Publish capture through GitHub logs (no public tunnel)
-        if: always()
+        if: ${{ always() && inputs.mode != 'server-logs' }}
         shell: powershell
         run: |
           if(-not $env:AUTOFORGE_CAPTURE){throw 'Capture was not created'}
           & node autoforge-observer/studio/autoforge.mjs bridge --root $env:AUTOFORGE_CAPTURE --files events.jsonl,capture-manifest.json
           if($LASTEXITCODE -ne 0){throw 'Capture transport failed or exceeded bounded log capacity'}
+      - name: Automatically collect appended server logs (read-only)
+        if: ${{ inputs.mode == 'server-logs' }}
+        shell: powershell
+        env:
+          SERVER_LOG_FILE: ${{ inputs.log_file }}
+          OBSERVE_SECONDS: ${{ inputs.seconds }}
+          BACKEND_COMMIT: ${{ inputs.backend_commit }}
+        run: |
+          $ErrorActionPreference='Stop'
+          if([int]$env:OBSERVE_SECONDS -lt 1 -or [int]$env:OBSERVE_SECONDS -gt 300){throw 'Duration outside 1..300 seconds'}
+          $capture=Join-Path $env:RUNNER_TEMP "autoforge-log-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          "AUTOFORGE_LOG_CAPTURE=$capture" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          $argv=@('autoforge-observer/studio/items/autoforge.mjs','logs','--file',$env:SERVER_LOG_FILE,'--out',$capture,'--seconds',$env:OBSERVE_SECONDS,'--from','end','--environment',"runner-$env:RUNNER_NAME",'--test-id',"github-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT")
+          if($env:BACKEND_COMMIT){$argv+=@('--commit',$env:BACKEND_COMMIT)}
+          & node @argv
+          if($LASTEXITCODE -ne 0){throw 'Log observer failed; no privilege elevation or service control was attempted'}
+      - name: Diagnose and publish log evidence without Cloudflare
+        if: ${{ always() && inputs.mode == 'server-logs' }}
+        shell: powershell
+        run: |
+          $ErrorActionPreference='Stop'
+          if(-not $env:AUTOFORGE_LOG_CAPTURE){throw 'Log capture was not created'}
+          $bundle=Join-Path $env:RUNNER_TEMP "autoforge-log-bundle-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          & node autoforge-observer/studio/items/autoforge.mjs log-bundle --capture $env:AUTOFORGE_LOG_CAPTURE --out $bundle
+          if($LASTEXITCODE -ne 0){throw 'Log bundle failed; no empty success evidence will be published'}
+          Get-Content -LiteralPath (Join-Path $bundle 'github-evidence.txt')

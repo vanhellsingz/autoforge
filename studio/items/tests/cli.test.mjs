@@ -1,0 +1,21 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {mkdtempSync,mkdirSync,writeFileSync,appendFileSync,readFileSync,rmSync} from 'node:fs';
+import {join} from 'node:path';import {tmpdir} from 'node:os';
+import {main} from '../autoforge.mjs';import {readLogCapture} from '../server-log.mjs';
+test('CLI indexes and explains catalog, plans unknown items conservatively, and roundtrips automatic log evidence',async t=>{
+ const root=mkdtempSync(join(tmpdir(),'af-items-cli-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
+ const client=join(root,'client'),config=join(client,'res/release/config');mkdirSync(config,{recursive:true});
+ writeFileSync(join(config,'t_s_itemtemplate-aaaaaaaaaa.json'),JSON.stringify({t_s_itemtemplate:[{TemplateId:7,TemplateName_pt:'Poção',MasterType:2,SellGold:20}]}));
+ const indexed=join(root,'indexed');await main(['index','--client',client,'--out',indexed]);const index=join(indexed,'item-index.json');
+ const found=await main(['search','--index',index,'--query','pocao','--out',join(root,'search')]);assert.equal(found.total,1);
+ await main(['explain','--index',index,'--id','7','--client',client,'--out',join(root,'explain')]);
+ const plan=await main(['scenarios','--index',index,'--out',join(root,'planned')]);assert.equal(plan.coverage.verifiedItems,0);
+ const source=join(root,'source');mkdirSync(source);const file=join(source,'server.log');writeFileSync(file,'password=never-export\n');
+ const timer=setTimeout(()=>appendFileSync(file,JSON.stringify({timestamp:'2026-11-05T12:00:00Z',event:'item_use_rejected',templateId:7,sessionId:'s',requestId:'r',message:'password=never-export'})+'\n'),80);t.after(()=>clearTimeout(timer));
+ const capture=join(root,'capture');await main(['logs','--file',file,'--from','end','--seconds','1','--poll-ms','25','--out',capture]);
+ const records=readLogCapture(capture);assert.equal(records.events.length,1);assert.equal(JSON.stringify(records).includes('never-export'),false);
+ const bundle=join(root,'bundle');const result=await main(['log-bundle','--capture',capture,'--index',index,'--out',bundle]);assert.equal(result.incidents,1);
+ const github=join(root,'github.txt');writeFileSync(github,readFileSync(join(bundle,'github-evidence.txt'),'utf8').split('\n').map(l=>'job step 2026Z '+l).join('\n'));
+ const restored=join(root,'restored');await main(['recover-logs','--file',github,'--out',restored]);assert.deepEqual(readFileSync(join(restored,'events.jsonl')),readFileSync(join(capture,'events.jsonl')));
+});
+test('CLI refuses unknown options and existing output',async()=>{await assert.rejects(()=>main(['search','--typo','x']),/Unknown option/);});

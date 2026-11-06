@@ -1,3 +1,20 @@
+# AutoForge — branch Items & Logs
+
+**Branch isolada:** `feature/items-logs-intelligence`. Base: main `a08cabd`. Esta entrega não altera o servidor nem a main usada pelo Arena.
+
+Cinco funções novas: índice pesquisável de itens, dossiês de campos/referências, cenários por contrato, coleta automática incremental de logs e diagnóstico de incidentes ligado aos itens.
+
+**Comece aqui:** [guia e prompt para o Arena](docs/ITEMS_LOGS_START.md).
+
+```powershell
+node studio/items/autoforge.mjs help
+npm run items -- help
+```
+
+A coleta usa o runner existente para ler um arquivo autorizado e publicar evidências pelos logs do GitHub; não precisa de Cloudflare, serviço Windows adicional ou permissão de administrador. O workflow continua opt-in e não foi executado no servidor nesta entrega.
+
+---
+
 # AutoForge — Core 2.4, Plus v1, Studio 2.5 e Studio Next 2.6
 
 **Novidades integradas do ZIP v3:** Drift Watch, matriz de lacunas cliente/Java, calibração conservadora de frames, comparação estatística e Evidence Pack. O recorder CDP, gerador de contratos Java21 e a ponte de evidências do Studio 2.5 permanecem ativos. Nada aplica código no Wartune automaticamente.
