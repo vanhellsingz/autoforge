@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoForge · Fluxo da ação</title><link rel="stylesheet" href="/console.css"><script src="/console.js" defer></script></head>
+<body>
+<div class="shell">
+  <header class="top"><div class="mark mono">ACE</div><div><h1>Extrator de uma ação</h1><p id="identity" class="mono">Abrindo pacote…</p></div><nav><button id="reload" class="ghost">Recarregar pacote</button><button id="download" class="ghost" disabled>Baixar relatório</button></nav></header>
+  <div id="error" role="alert"></div>
+  <div id="stages" class="spine" aria-label="Etapas do fluxo"></div>
+  <div class="work">
+    <aside class="col"><h2 class="kicker">Evidência e validação</h2><div id="validation"></div><h2 class="kicker">Seções</h2><div id="sections"></div></aside>
+    <main class="col"><h2 id="title" class="summary">Fluxo</h2><p id="summary"></p><div id="filters" class="chips"></div><div id="details"></div></main>
+    <section class="col"><h2 class="kicker">Arquivos do pacote</h2><div id="files" class="file-list"></div><p id="file-hash" class="mono"></p><pre id="source" class="sheet" tabindex="0"></pre></section>
+  </div>
+</div>
+</body></html>

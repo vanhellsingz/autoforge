@@ -1,5 +1,7 @@
 # AutoForge — auditoria de mapas e memória compartilhada
 
+**Fluxo de ação integrado:** motor AST/fluxo de dados/Protobuf/Java do pacote V2, console visual adaptado da V1 e validação com escopo explícito. [Manual operacional e prompt para o Arena](docs/ACTION_FLOW_ARENA.md). Execute `extract-flow` pelo Studio e abra o pacote com `npm run flow-console -- --package PACOTE`.
+
 **Novo `incident-replay`** compara uma ação por etapas, aponta a primeira diferença e perdas de itens alheios, encontra métodos candidatos e produz `ARENA.md`. Inclui reprodução real da direção da conversão de gemas com o decodificador Java isolado. [Comandos e instruções](docs/INCIDENT_REPLAY.md).
 
 **Entrega na main:** auditoria por fronteira do fluxo, detecção de regressões com baseline verificável, registro de capacidades com testes/revisão/aprovação e pacote de conhecimento reutilizável por qualquer agente. [Comece aqui: comandos e prompt para o Arena](docs/MAP_AUDIT_MEMORY.md).

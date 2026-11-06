@@ -1,0 +1,39 @@
+{
+  "baseCommit": "f6ab0bc9d00c5abb0dd0522a5a22dc64b401ceaf",
+  "schemaVersion": 1,
+  "imports": [
+    {
+      "archive": "autoforge-action-flow-extractorV2.zip",
+      "sha256": "a9bfe90632a79cae3bb52451ed2c4fdfe96fb6c600e92da9f9e35da16785e56f",
+      "adaptations": [
+        "static-only differential analysis",
+        "postpatch results require execution",
+        "review-only decoder proposal",
+        "bounded indexing and opcode/schema checks"
+      ],
+      "selected": [
+        "studio/slice/"
+      ]
+    },
+    {
+      "archive": "autoforge-action-flow-extractor.zip",
+      "sha256": "c76013d313268a180c0d146be0f9333be57c344dc3c0441cb5955892b65e9a97",
+      "adaptations": [
+        "loopback GET-only console",
+        "V2 package schema adapter",
+        "artifact hash validation before rendering"
+      ],
+      "selected": [
+        "src/app/globals.css",
+        "src/app/console.tsx navigation model"
+      ]
+    }
+  ],
+  "patchApplicationEnabled": false,
+  "tests": {
+    "passed": 300,
+    "skipped": 3,
+    "failures": 0
+  },
+  "gameRuntimeValidation": "NOT_RUN"
+}
