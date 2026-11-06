@@ -86,8 +86,8 @@ test('Evidence pack verifies hashes and unpacks only into a new directory',()=>{
   assert.deepEqual(evidenceFromText(evidenceAsText(p.buffer)),p.buffer);
 });
 test('Evidence pack refuses secrets, non-reports and traversal',()=>{
-  const root=dir();put(root,'secret.log','password=ultrasecret');
-  assert.throws(()=>makeEvidencePack({root,files:['secret.log']}),/sensitive/i);
+  const root=dir();put(root,'safety.log','password=ultrasecret');
+  assert.throws(()=>makeEvidencePack({root,files:['safety.log']}),/sensitive/i);
   assert.throws(()=>makeEvidencePack({root,files:['../secret.log']}),/Unsafe/i);
   assert.throws(()=>makeEvidencePack({root,files:['.env']}),/not an approved/i);
 });
